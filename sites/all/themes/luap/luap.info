@@ -1,0 +1,58 @@
+; Drupal's .info files allow themers to easily specify some of the static
+; properties of your theme. Properties such as its name, stylesheets,
+; javascripts, and block regions.
+;
+; Drupal 7 stores a cache of the data in this .info files. If you modify any
+; lines in this file, you MUST refresh Drupal 7's cache by simply visiting the
+; Appearance page at admin/appearance.
+
+
+screenshot  = screenshot.png
+name        = Luap Studios
+description = Zen Sub-theme For Luap Studios
+
+core        = 7.x
+base theme  = zen
+
+
+stylesheets[all][] = system.menus.css
+stylesheets[all][] = system.messages.css
+stylesheets[all][] = system.theme.css
+stylesheets[all][] = css/styles.css
+
+
+scripts[] = js/jquery.fitvids.js
+scripts[] = js/jquery.waitforimages.js
+scripts[] = js/script.js
+
+regions[content_above]	= Content: Above
+regions[content]        = Content
+regions[sidebar_first]  = Sidebar
+regions[navigation]     = Navigation bar
+regions[footer]         = Footer
+
+regions[page_top]       = Page top
+regions[page_bottom]    = Page bottom
+
+
+features[] = logo
+features[] = name
+features[] = favicon
+features[] = main_menu
+
+
+
+; Set the default values of settings on the theme-settings.php form.
+settings[zen_breadcrumb]           = no
+settings[zen_breadcrumb_separator] = ' › '
+settings[zen_breadcrumb_home]      = 1
+settings[zen_breadcrumb_trailing]  = 0
+settings[zen_breadcrumb_title]     = 0
+settings[zen_skip_link_anchor]     = main-menu
+settings[zen_skip_link_text]       = Jump to navigation
+settings[zen_html5_respond_meta][] = respond
+settings[zen_html5_respond_meta][] = html5
+settings[zen_html5_respond_meta][] = meta
+settings[zen_rebuild_registry]     = 1
+settings[zen_wireframes]           = 0
+

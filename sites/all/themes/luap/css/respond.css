@@ -1,0 +1,128 @@
+
+/* ------------------------------ */
+/* DESKTOP LARGE
+/* ------------------------------ */
+@media (max-width: 1400px) {
+
+/* MAIN LAYOUT 
+/* ------------------------------ */
+.width{ margin:0 70px}
+
+
+/* PAGE ELEMENTS
+/* ------------------------------ */
+.info-bar{ margin:0 -70px; }
+
+
+}
+
+
+/* ------------------------------ */
+/* TABLET
+/* ------------------------------ */
+@media (max-width: 960px) {
+
+
+/* MAIN LAYOUT 
+/* ------------------------------ */
+.width{ margin:0 30px}
+
+
+/* PAGE ELEMENTS
+/* ------------------------------ */
+.thumb{ width:25%}
+.thumb .inner{ padding:0 7px 14px;}
+.info-bar{ margin:0 -30px; }
+
+
+/* VIEWS
+/* ------------------------------ */
+
+.view.thumbs{ margin:0 -7px}
+
+/* EXHIBITIONS */
+.view-exhibitions .views-field-title{ width:15%}
+.view-exhibitions .views-field-body{ width:85%}
+
+
+}
+
+
+
+/* ------------------------------ */
+/* MOBILE
+/* ------------------------------ */
+@media (max-width: 600px) {
+
+
+/* MAIN LAYOUT 
+/* ------------------------------ */
+.width{ margin:0 10px}
+
+.sidebar-first #page-content,
+.sidebar-first #sidebar{ float:none; width:auto;}
+.sidebar-first #sidebar{ margin:0 auto 30px; max-width:280px}
+.sidebar-first #sidebar > .inner{ padding-left:0}
+
+
+/* TOGGLES
+----------------------------------*/
+.filter-open #project-info-toggle{ display:none}
+
+
+/* PAGE ELEMENTS
+/* ------------------------------ */
+.thumb{ width:50%}
+.thumb .inner{ padding:0 5px 10px}
+.info-box{ padding:20px}
+.info-bar{ text-align:center; margin:0 -10px; }
+.info-bar .arrow, .info-bar #share{ float:none; }
+.info-bar .arrow{ margin:6px 0 3px; }
+.info-bar #share{ top:0; margin:3px 0 6px}
+
+
+/* CONTENT TYPES
+/* ------------------------------ */
+
+/* FRONT 
+----------------------------------*/
+.front #overlay{ width:100% !important}
+.front #logo{ margin-left:0}
+.front #toggles{display:block;}
+.front .toggle a{ color:#fff}
+.front #nav{ right:-190px; }
+
+/* ARTWORK */
+#artwork #artwork-prev{ left:5px; }
+#artwork #artwork-next{ right:5px; }
+#artwork #artwork-info-bar,
+#artwork-info-bar{ margin:-33px -30px 0 -30px}
+
+
+/* VIEWS
+/* ------------------------------ */
+.view.thumbs{ margin:0 -5px}
+
+/* LATEST NEWS */
+.view-news.view-display-teaser .full-width{ padding:20px}
+.view-news.view-display-teaser .info-box{ max-width:none}
+
+/* EXHIBITIONS */
+.view-exhibitions .views-field-title,
+.view-exhibitions .views-field-body{ width:100%}
+.view-exhibitions .views-field-title{ font-weight:bold}
+
+}  
+
+@media
+only screen and (-webkit-min-device-pixel-ratio: 2),
+only screen and (   min--moz-device-pixel-ratio: 2),
+only screen and (     -o-min-device-pixel-ratio: 2/1),
+only screen and (        min-device-pixel-ratio: 2),
+only screen and (                min-resolution: 192dpi),
+only screen and (                min-resolution: 2dppx) { 
+  
+#logo{ background:url(../images/logo@2x.png); background-size:92px 27px; }
+.front #logo{ background:url(../logo_white@2x.png); background-size:92px 27px; }
+
+}

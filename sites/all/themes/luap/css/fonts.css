@@ -1,0 +1,42 @@
+
+  
+@font-face {
+    font-family: 'VolkswagenReg';
+    src: url('fonts/volkswagen.eot');
+    src: url('fonts/volkswagen.eot?#iefix') format('embedded-opentype'),
+         url('fonts/volkswagen.woff') format('woff'),
+         url('fonts/volkswagen.ttf') format('truetype'),
+         url('fonts/volkswagen.svg#volkswagenregular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+	font-family: 'VolkswagenMed';
+	src: url('fonts/volkswagenmed.eot');
+	src: url('fonts/volkswagenmed.eot?#iefix') format('embedded-opentype'),
+	url('fonts/volkswagenmed.woff') format('woff'),
+	url('fonts/volkswagenmed.ttf') format('truetype');
+	font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+	font-family: 'VolkswagenBold';
+	src: url('fonts/volkswagenbold.eot');
+	src: url('fonts/volkswagenbold.eot?#iefix') format('embedded-opentype'),
+	url('fonts/volkswagenbold.woff') format('woff'),
+	url('fonts/volkswagenbold.ttf') format('truetype');
+	font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+	font-family: 'Dado';
+	src: url('fonts/Dado.eot');
+	src: url('fonts/Dado.eot?#iefix') format('embedded-opentype'),
+	url('fonts/Dado.woff') format('woff'),
+	url('fonts/Dado.ttf') format('truetype');
+	font-weight: normal;
+    font-style: normal;
+}
