@@ -25,7 +25,9 @@ body{ color:#000; font-family:'VolkswagenMed'; font-size:62.5%; -webkit-font-smo
 /* MENUS
 /* ------------------------------ */
 
-#nav, #filter{ background:#fff url(../images/line_vert.png) no-repeat; width:190px; position:absolute; top:0; right:-190px}
+#nav, #filter{ background:#fff; width:190px; position:absolute; top:0; right:-190px}
+#nav:before, #filter:before{ content:''; display:block; background:url(../images/line_vert.png) no-repeat; position:absolute; left:0; top:0; width:8px; height:100%;}
+.front #nav:before{ left:-8px}
 #nav > .inner{ padding-top:25px}
 #nav ul.menu, #nav ul.menu li{ margin:0; padding:0; list-style:none;}
 #nav ul.menu{ font-size:1.5em; margin-bottom:40px}
@@ -48,7 +50,7 @@ body{ color:#000; font-family:'VolkswagenMed'; font-size:62.5%; -webkit-font-smo
 .toggle span{ position:absolute; z-index:0; top:0; left:0; background:#fff; width:100%; height:100%; opacity:0}
 .toggle span.fade{ opacity:.6; z-index:2}
 
-#menu-toggle{ top:-45px}
+#menu-toggle{ top:-55px}
 #menu-toggle a:after{ width:27px; height:24px; }
 #menu-toggle a.close-nav:after{ background-position:-30px 0}
 #filter-toggle a:after{ background-position:-130px 0; width:29px; height:25px; }
@@ -57,6 +59,7 @@ body{ color:#000; font-family:'VolkswagenMed'; font-size:62.5%; -webkit-font-smo
 #project-info{ text-align:center; max-width:620px; margin:0 auto; opacity:0}
 .project-info #project-info{ opacity:1; display:block}
 #project-info #project-info-toggle{ right:auto; left:25px; top:-45px}
+#project-info #project-info-toggle a{ display:block}
 #project-info #project-info-toggle a:after{ width:14px; height:19px; background-position: -110px 0; left:-25px; top:3px}
 #project-info #project-info-toggle a.close:after{ background-position:-190px 0; width:19px; height:17px; }
 #project-info #project-info-toggle span{ display:inline; position:relative; opacity:1}
@@ -71,7 +74,7 @@ body{ color:#000; font-family:'VolkswagenMed'; font-size:62.5%; -webkit-font-smo
 #loading{ position:absolute; width:15px; top:85px; left:50%; margin-left:-7px; height:15px; background:url(../images/ajax-loader.gif) 50% 0 no-repeat; display:none; z-index:999; opacity:0 }
 .loading #loading,
 .loading-artwork #loading{ opacity:1; display:block}
-.loading-artwork #loading{ top:22px;}
+.loading-artwork #loading{ top:22px!important; left:50%!important;;}
 
 #header, #toggles, #main{ z-index:1}
 #nav, #filter{ z-index:3}
@@ -82,7 +85,8 @@ body{ color:#000; font-family:'VolkswagenMed'; font-size:62.5%; -webkit-font-smo
 .menu-open #header, .menu-open #toggles, .menu-open #nav, .menu-open #main,
 .filter-open #header, .filter-open #toggles, .filter-open #filter, .filter-open #main,
 .menu-open #loading, .filter-open #loading{ transform:translate3d(-190px,0,0); -o-transform: translate3d(-190px,0,0); -ms-transform: translate3d(-190px,0,0); -moz-transform: translate3d(-190px,0,0); -webkit-transform: translate3d(-190px,0,0); }
-.menu-open.loading-artwork #loading, .filter-open.loading-artwork #loading{ transform:translate3d(0,0,0); -o-transform: translate3d(0,0,0); -ms-transform: translate3d(0,0,0); -moz-transform: translate3d(0,0,0); -webkit-transform: translate3d(0,0,0); }
+.menu-open.loading-artwork #loading, .filter-open.loading-artwork #loading,
+.menu-open.loading #loading{ transform:translate3d(0,0,0); -o-transform: translate3d(0,0,0); -ms-transform: translate3d(0,0,0); -moz-transform: translate3d(0,0,0); -webkit-transform: translate3d(0,0,0); }
 
 .filter-open #page-content{ transform:translate3d(190px,0,0); -o-transform: translate3d(190px,0,0); -ms-transform: translate3d(190px,0,0); -moz-transform: translate3d(190px,0,0); -webkit-transform: translate3d(190px,0,0); margin-right:190px }
 
@@ -215,6 +219,7 @@ ul.tabs-primary li a:hover{ opacity:0.6}
 .front #logo{ background:url(../images/logo_white.png); margin-left:-190px}
 .front #toggles{display:none}
 .front #nav{ right:0; height:100%}
+.front #nav > .inner{ margin-left:-8px}
 
 
 /* PAGE 
@@ -244,9 +249,9 @@ ul.tabs-primary li a:hover{ opacity:0.6}
 #artwork.active{ opacity:1}
 #artwork.notloaded .close, #artwork.notloaded .artwork-pager{ display:none}
 #artwork .close{ text-indent:-999em; display:block; width:26px; height:24px; background:url(../images/sprite.png) -60px 0; position:absolute; top:20px; right:30px }
-#artwork .artwork-pager{ display:block; text-indent:-999em; background:url(../images/sprite.png); width:19px; height:12px; position:absolute; top:200px;}
-#artwork #artwork-prev{ left:30px; background-position:-90px -20px}
-#artwork #artwork-next{ right:30px; background-position:-90px 0}
+#artwork .artwork-pager{ display:block; text-indent:-999em; background:url(../images/sprite.png); width:44px; height:44px; position:absolute; top:200px;}
+#artwork #artwork-prev{ left:30px; background-position:-130px -34px}
+#artwork #artwork-next{ right:30px; background-position:-155px -34px}
 #artwork .info-bar{ margin:0 -30px}
 
 #artwork-image{ text-align:center; padding-bottom:50px; max-width:1000px; margin:0 auto}

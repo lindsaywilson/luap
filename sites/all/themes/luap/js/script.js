@@ -52,6 +52,9 @@ Drupal.behaviors.my_custom_behavior = {
 				$(this).attr('class','close-filter');
 				$('body').addClass('filter-open');
 				$('#menu-toggle span').addClass('fade');
+				if($('#page').height() < $('#filter').height()){
+					$('#page').height($('#filter').height());
+				}
 			break;
 			case 'close-filter':
 				$(this).attr('class','open-filter');
@@ -114,14 +117,24 @@ Drupal.behaviors.my_custom_behavior = {
 	//---------------------------
 	
 	// window resize function for artwork image
-	function artworkResize(y){
-		winH = $(window).height()-y;
+	function artworkResize(offsetY){
+		winH = $(window).height();
+		winW = $(window).width();
 		$('#artwork-image').waitForImages( function(){
-			$('#artwork-image, #artwork-image div').height('auto');
-			if($('#artwork-image img').height() > winH){
-				$('#artwork-image, #artwork-image div').height(winH);
+			// Set divs to height of page and align info bar to bottom
+			$('#artwork-image, #artwork-image div').height(winH-offsetY);
+			if(winW <= 480 && winW > 360){
+				$('#artwork-image, #artwork-image div').height(winH-offsetY+80);
 			}
+			if(winW <= 360){
+				$('#artwork-image, #artwork-image div').height(winH-offsetY+57);
+			}
+			// Center image to page
+			$('#artwork-image img').css('margin-top', ($('#artwork-image').height() - $('#artwork-image img').height()) / 2 +'px' );
+			// Set page height to popup height
+			$('#page').height($('#artwork').height());
 		});
+		$('#artwork .artwork-pager').css('top',(winH - $('#artwork-info-bar').height())/2+'px');
 	}
 	
 	// add click event to read more link
@@ -132,9 +145,9 @@ Drupal.behaviors.my_custom_behavior = {
 	
 	if($('body').hasClass('node-type-artwork')){
 		// setup artwork resize function
-		artworkResize(217);
+		artworkResize(225);
 		$(window).resize( function(){
-			artworkResize(217);
+			artworkResize(225);
 		})
 	}
 	
@@ -180,10 +193,11 @@ Drupal.behaviors.my_custom_behavior = {
 	
 	// .artwork click function
 	function artworkPopup() {
-		var path = $(this).attr('href');
 		var obj = $(this);
+		var path = obj.attr('href');
 		yPos = $(document).scrollTop();
 		$('body').addClass('loading');
+		$('#loading').css('top',obj.offset().top-15+'px').css('left',(obj.offset().left + (obj.width()/2))+'px');
 		if($('#artwork').hasClass('notloaded')){
 			$('#artwork').removeClass('notloaded');
 		}else{
@@ -195,10 +209,16 @@ Drupal.behaviors.my_custom_behavior = {
 			// pass ajax response type to load stripped down ajax template
 			data: { response_type: 'ajax' },
 			success: function(html) {
-				$('body').removeClass('loading').removeClass('loading-artwork');
+				$('#loading').css('top','22px').css('left','50%');
 				$('#artwork').removeClass('fade').addClass('active');
 				$('#artwork #load').html(html);
 				$('#artwork-image, #artwork-image div').height($(window).height());
+				$('#artwork-image img').hide();
+				$('#artwork-image').waitForImages( function(){
+					$('body').removeClass('loading').removeClass('loading-artwork');
+					$('#loading').css('top','85px').css('left','50%');
+					$('#artwork-image img').fadeIn();
+				});
 				$('#page-content').addClass('fade');
 				artworkResize(150);
 				$(document).scrollTop(0);
@@ -212,12 +232,6 @@ Drupal.behaviors.my_custom_behavior = {
 				// Set pagers rel to nid to setup prev/next links
 				$('#artwork .artwork-pager').attr('rel',obj.data('nid'));
 				
-				// Set page height smaller than artwork, resize it
-				if($('#page').height() < $('#artwork').height()){
-					$('#page').height($('#artwork').height());
-				}else{
-					$('#page').height('auto');
-				}
 			}
 		});
 		return false;
@@ -270,6 +284,7 @@ Drupal.behaviors.my_custom_behavior = {
 			var path = obj.attr('href');
 			$('#page-content').addClass('fade');
 			$('body').addClass('loading');
+			$('#loading').css('top',obj.offset().top+'px').css('left',obj.offset().left+176+'px');
 			
 			loadPortfolioInfo(obj);
 			
@@ -328,6 +343,7 @@ Drupal.behaviors.my_custom_behavior = {
 					obj.addClass('active');
 					
 					$('#node-content').html(html);
+					$("html, body").animate({ scrollTop: 0 });
 					$('.artwork').on('click', artworkPopup );
 					
 					// If hash exists and there is a second element, click to filter the results

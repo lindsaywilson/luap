@@ -29,7 +29,7 @@
 	<?php endif; ?>
   </header>
   
-  <div id="loading" class="transition"></div>
+  <div id="loading"></div>
   
   <div id="toggles" class="transition width">
   	<div id="menu-toggle" class="toggle transition"><a class="open-nav" href="#">Menu</a><span></span></div>
