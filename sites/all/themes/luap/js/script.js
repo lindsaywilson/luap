@@ -300,7 +300,7 @@ Drupal.behaviors.my_custom_behavior = {
 			var path = obj.attr('href');
 			$('#page-content').addClass('fade');
 			$('body').addClass('loading');
-			$('#loading').css('top',obj.offset().top+'px').css('left',obj.offset().left+176+'px');
+			$('#loading').css('top',obj.offset().top+'px').css('left',obj.offset().left-15+'px');
 			
 			loadPortfolioInfo(obj);
 			
@@ -518,19 +518,22 @@ Drupal.behaviors.my_custom_behavior = {
 	//---------------------------
 	$('.view-images.view-display-id-filter .view-content a').click( function(){
 		
-		var a = $(this);
-		var path = $(this).attr('href');
+		var obj = $(this);
+		var path = obj.attr('href');
 		$('#page-content').addClass('fade');
+		$('body').addClass('loading');
+		$('#loading').css('top',obj.offset().top+'px').css('left',obj.offset().left-15+'px');
 		
 		$.ajax({
             type: 'GET',
             url: path,
             data: { response_type: 'ajax' },
             success: function(html) {
-
+				
+				$('body').removeClass('loading');
 				$('#page-content').removeClass('fade');
 				$('#filter a.active').removeClass('active');
-				a.addClass('active');
+				obj.addClass('active');
 				
 				$('#node-content').html(html);
 				hash = path.split("/"); 

@@ -13,9 +13,9 @@
 <?php if(isset($node) && $node->nid == 33): ?>
 <div id="artwork" class="transition notloaded">
     <div class="inner">
-    <a href="#" class="close">Close</a>
-    <a href="#" id="artwork-prev" class="artwork-pager">Previous</a>
-    <a href="#" id="artwork-next" class="artwork-pager">Next</a>
+    <a class="close">Close</a>
+    <a id="artwork-prev" class="artwork-pager">Previous</a>
+    <a id="artwork-next" class="artwork-pager">Next</a>
     	<div id="load"></div>
     </div>
 </div>

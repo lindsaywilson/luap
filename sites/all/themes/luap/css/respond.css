@@ -58,6 +58,13 @@
 .thumb .inner{ padding:0 7px 14px;}
 .info-bar{ margin:0 -30px; }
 
+/* LIGHTBOX */
+.lb-container{ padding:0 20px}
+.lb-image{ width:100% !important; height:auto !important; max-width:100%}
+.lb-data .lb-close{ right:5px; top:-40px}
+.lb-next, .lb-next:hover{ right:-5px}
+.lb-prev, .lb-prev:hover{ left:-5px}
+
 
 /* CONTENT TYPES
 /* ------------------------------ */

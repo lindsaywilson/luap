@@ -210,6 +210,19 @@ ul.tabs-primary li a:hover{ opacity:0.6}
 .fluid-width-video-wrapper iframe, .fluid-width-video-wrapper object, .fluid-width-video-wrapper embed { height: 100%; width: 100%; position: absolute; top: 0; left: 0;  }
 
 
+/* LIGHTBOX
+----------------------------------*/
+.lightboxOverlay{ background:#fff; opacity:1}
+.lb-data .lb-close{ background:url(../images/sprite.png) -60px 0; width:26px; height:24px; position:absolute; top:-50px; right:30px; opacity:1}
+.lb-outerContainer,
+.lightbox .lb-image{ border-radius:0}
+.lb-container{ padding:0}
+.lb-next, .lb-next:hover{ background:url(../images/arrow_right.png) right center no-repeat; right:-30px; position:relative}
+.lb-prev, .lb-prev:hover{ background:url(../images/arrow_left.png) 0 center no-repeat; left:-30px; position:relative}
+.lb-cancel{ width:15px; height:15px; background:url(../images/ajax-loader.gif) 50% 0 no-repeat; }
+.lb-details{ display:none}
+
+
 /* ------------------------------ */
 /* CONTENT TYPES
 /* ------------------------------ */
@@ -250,8 +263,8 @@ ul.tabs-primary li a:hover{ opacity:0.6}
 #artwork.fade > .inner{ opacity:0.6}
 #artwork.active{ opacity:1}
 #artwork.notloaded .close, #artwork.notloaded .artwork-pager{ display:none}
-#artwork .close{ text-indent:-999em; display:block; width:26px; height:24px; background:url(../images/sprite.png) -60px 0; position:absolute; top:20px; right:30px; z-index:30 }
-#artwork .artwork-pager{ display:block; text-indent:-999em; width:35%; height:12px; position:absolute; top:0; z-index:25}
+#artwork .close{ text-indent:-999em; display:block; width:26px; height:24px; background:url(../images/sprite.png) -60px 0; position:absolute; top:20px; right:30px; z-index:30; cursor:pointer }
+#artwork .artwork-pager{ display:block; text-indent:-999em; width:35%; height:12px; position:absolute; top:0; z-index:25; cursor:pointer}
 #artwork #artwork-prev{ left:30px; background:url(../images/arrow_left.png) 0 50% no-repeat; }
 #artwork #artwork-next{ right:30px; background:url(../images/arrow_right.png) right 50% no-repeat;}
 #artwork .info-bar{ margin:0 -30px}
