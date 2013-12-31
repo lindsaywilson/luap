@@ -103,6 +103,7 @@
 .thumb .inner{ padding:0 5px 10px}
 .info-box{ padding:20px}
 .info-bar{ text-align:center; margin:0 -10px; }
+.info-bar .inner{ padding-left:30px; padding-right:5px}
 .info-bar .arrow{ margin:6px 0 3px; }
 .info-bar #share{ top:0; margin:3px 0 6px}
 
@@ -124,6 +125,12 @@
 .front #nav:before{ left:0}
 .front.menu-open #nav:before{ left:-8px}
 
+/* ARTWORK */
+#artwork > .inner{ padding-top:10px}
+#artwork-image{ padding-bottom:20px}
+
+.node-type-artwork #main{ margin-top:10px}
+
 
 /* VIEWS
 /* ------------------------------ */
@@ -143,25 +150,17 @@
 
 @media (max-width: 480px) {
 
-/* PAGE ELEMENTS
-/* ------------------------------ */
-.info-bar .inner{ padding-left:30px; padding-right:5px}
-
-
 /* CONTENT TYPES
 /* ------------------------------ */
 
 /* ARTWORK */
-#artwork > .inner{ padding-top:10px}
-#artwork-image{ padding-bottom:10px}
 #artwork-project-details{ display:none}	
 
-.node-type-artwork #main{ margin-top:10px}
 
 }
 
 
-@media (max-width: 360px) {
+@media (max-width: 400px) {
 
 /* PAGE ELEMENTS
 /* ------------------------------ */

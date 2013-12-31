@@ -256,7 +256,7 @@ ul.tabs-primary li a:hover{ opacity:0.6}
 #artwork #artwork-next{ right:30px; background:url(../images/arrow_right.png) right 50% no-repeat;}
 #artwork .info-bar{ margin:0 -30px}
 
-#artwork-image{ text-align:center; padding-bottom:50px; max-width:1000px; margin:0 auto}
+#artwork-image{ text-align:center; padding-bottom:60px; max-width:1000px; margin:0 auto}
 #artwork-image img{ max-height:100%}
 #artwork-details,
 #artwork-project-details{ text-align:center; max-width:560px; margin:0 auto 50px; }

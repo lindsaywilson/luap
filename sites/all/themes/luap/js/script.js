@@ -137,10 +137,10 @@ Drupal.behaviors.my_custom_behavior = {
 			
 			// Set divs to height of page and align info bar to bottom
 			$('#artwork-image, #artwork-image div').height(winH-offsetY);
-			if(winW <= 480 && winW > 360){
+			if(winW <= 600 && winW > 400){
 				$('#artwork-image, #artwork-image div').height(winH-offsetY+80);
 			}
-			if(winW <= 360){
+			if(winW <= 400){
 				$('#artwork-image, #artwork-image div').height(winH-offsetY+57);
 			}
 			
