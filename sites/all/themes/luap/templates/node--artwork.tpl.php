@@ -44,7 +44,7 @@
     
     <div id="artwork-project-bar" class="info-bar">
     <div class="inner clearfix">
-    	<a class="arrow" href="/portfolio/#/<?php print str_replace(' ','-', strtolower($term->name)); ?>">View the '<?php print $term->name ?>' project</a>
+    	<a class="arrow" href="/portfolio/#/<?php print str_replace(' ','-', strtolower($term->name)); ?>">View '<?php print $term->name ?>' project</a>
     </div>
     </div>
 

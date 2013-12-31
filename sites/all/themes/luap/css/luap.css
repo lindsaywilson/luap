@@ -9,7 +9,7 @@ body{ color:#000; font-family:'VolkswagenMed'; font-size:62.5%; -webkit-font-smo
 #page{ position:relative; overflow:hidden; min-height:100%}
 #header{ padding:20px 0; text-align:center; background:url(../images/line.png) center bottom no-repeat; background-size:100% 10px; position:relative}
 #main{ position:relative; margin-top:60px; margin-bottom:80px}
-.width{ margin:0 auto; max-width:1400px; }
+.width{ margin:0 70px; max-width:1600px; }
 #content > .inner{ position:relative;}
 #page-content{ position:relative}
 
@@ -47,7 +47,7 @@ body{ color:#000; font-family:'VolkswagenMed'; font-size:62.5%; -webkit-font-smo
 .toggle{ position:absolute; top:15px; right:0; } 
 .toggle a{ font-family:'VolkswagenReg'; font-size:1.5em; text-decoration:none; position:relative; height:24px; display:inline-block;padding-right:35px; z-index:1  }
 .toggle a:after{ content:''; background:url(../images/sprite.png); display:block; position:absolute; right:0; top:0;}
-.toggle span{ position:absolute; z-index:0; top:0; left:0; background:#fff; width:100%; height:100%; opacity:0}
+.toggle span.cover{ position:absolute; z-index:0; top:0; left:0; background:#fff; width:100%; height:100%; opacity:0}
 .toggle span.fade{ opacity:.6; z-index:2}
 
 #menu-toggle{ top:-55px}
@@ -85,8 +85,8 @@ body{ color:#000; font-family:'VolkswagenMed'; font-size:62.5%; -webkit-font-smo
 .menu-open #header, .menu-open #toggles, .menu-open #nav, .menu-open #main,
 .filter-open #header, .filter-open #toggles, .filter-open #filter, .filter-open #main,
 .menu-open #loading, .filter-open #loading{ transform:translate3d(-190px,0,0); -o-transform: translate3d(-190px,0,0); -ms-transform: translate3d(-190px,0,0); -moz-transform: translate3d(-190px,0,0); -webkit-transform: translate3d(-190px,0,0); }
-.menu-open.loading-artwork #loading, .filter-open.loading-artwork #loading,
-.menu-open.loading #loading{ transform:translate3d(0,0,0); -o-transform: translate3d(0,0,0); -ms-transform: translate3d(0,0,0); -moz-transform: translate3d(0,0,0); -webkit-transform: translate3d(0,0,0); }
+.filter-open.loading-artwork #loading,
+.filter-open.loading #loading{ transform:translate3d(0,0,0); -o-transform: translate3d(0,0,0); -ms-transform: translate3d(0,0,0); -moz-transform: translate3d(0,0,0); -webkit-transform: translate3d(0,0,0); }
 
 .filter-open #page-content{ transform:translate3d(190px,0,0); -o-transform: translate3d(190px,0,0); -ms-transform: translate3d(190px,0,0); -moz-transform: translate3d(190px,0,0); -webkit-transform: translate3d(190px,0,0); margin-right:190px }
 
@@ -134,7 +134,8 @@ ul ul,
 ol ol{ font-size:1em; margin:10px 0 10px 30px; }
 ul ul{ list-style:none;}
 
-a{ color:#000; outline:none}
+a{ color:#000; outline:none; -webkit-tap-highlight-color: rgba(255, 255, 255, 0); }
+a:active{ outline:none}
 a:link{ outline:none}
 a:hover{ text-decoration:none}
 img.lb-image{ max-width:none}
@@ -177,10 +178,11 @@ ul.tabs-primary li a:hover{ opacity:0.6}
 .specs{ font-family:'Dado'; font-size:1.2em}
 .info-box{ background:#fff; padding:40px}
 
-.info-bar{ line-height:1}
+.info-bar{ line-height:1; position:relative; margin:0 -70px;}
 .info-bar .inner{ padding:8px 70px 5px;}
 .info-bar:before,
-.info-bar:after{ content:'';  display:block; background:url(../images/line.png);background-size:100% 10px; width:100%; height:10px}
+.info-bar:after{ content:''; display:block; background:url(../images/line.png); background-size:100% 10px; width:100%; height:10px; z-index:999}
+.info-bar:before{ position:absolute; top:-10px}
 .info-bar .arrow{ float:left; display:inline-block}
 
 .thumb{ width:20%; text-align:center; position:relative; float:left; }
@@ -194,7 +196,7 @@ ul.tabs-primary li a:hover{ opacity:0.6}
 ----------------------------------*/
 #share{ font-family:'Dado'; font-size:1.2em}
 #share .title{ display:inline-block; position:relative; top:5px}
-#share a{ display:inline-block; text-indent:-999em; height:17px; background:url(../images/sprite.png); margin:0 4px}
+#share a{ display:inline-block; text-indent:-999em; height:17px; background:url(../images/sprite.png); margin:0 4px; cursor:pointer}
 #share a.pinterest{ width:14px; background-position:0 -30px}
 #share a.twitter{ width:16px; background-position:-20px -30px}
 #share a.google{ width:13px; background-position:-40px -30px}
@@ -248,10 +250,10 @@ ul.tabs-primary li a:hover{ opacity:0.6}
 #artwork.fade > .inner{ opacity:0.6}
 #artwork.active{ opacity:1}
 #artwork.notloaded .close, #artwork.notloaded .artwork-pager{ display:none}
-#artwork .close{ text-indent:-999em; display:block; width:26px; height:24px; background:url(../images/sprite.png) -60px 0; position:absolute; top:20px; right:30px }
-#artwork .artwork-pager{ display:block; text-indent:-999em; background:url(../images/sprite.png); width:44px; height:44px; position:absolute; top:200px;}
-#artwork #artwork-prev{ left:30px; background-position:-130px -34px}
-#artwork #artwork-next{ right:30px; background-position:-155px -34px}
+#artwork .close{ text-indent:-999em; display:block; width:26px; height:24px; background:url(../images/sprite.png) -60px 0; position:absolute; top:20px; right:30px; z-index:30 }
+#artwork .artwork-pager{ display:block; text-indent:-999em; width:35%; height:12px; position:absolute; top:0; z-index:25}
+#artwork #artwork-prev{ left:30px; background:url(../images/arrow_left.png) 0 50% no-repeat; }
+#artwork #artwork-next{ right:30px; background:url(../images/arrow_right.png) right 50% no-repeat;}
 #artwork .info-bar{ margin:0 -30px}
 
 #artwork-image{ text-align:center; padding-bottom:50px; max-width:1000px; margin:0 auto}
@@ -270,7 +272,7 @@ ul.tabs-primary li a:hover{ opacity:0.6}
 .field-name-field-extra-content .field-name-field-intro p{ font-family:'Dado'; font-size:1.2em; margin-bottom:15px}
 .field-collection-view{ margin:0 0 35px; padding:0; border:none}
 .field-collection-container{ margin:0; padding:0; border:none}
-#news-info-bar{ position:fixed; bottom:0; left:0; width:100%; margin:0; background:#fff; z-index:1}
+#news-info-bar{ position:fixed; bottom:-10px; left:0; width:100%; margin:0; background:#fff; z-index:1}
 #news-info-bar .inner{ padding-left:0; padding-right:0}
 
 
@@ -289,7 +291,7 @@ ul.tabs-primary li a:hover{ opacity:0.6}
 
 /* LATEST NEWS 
 ----------------------------------*/
-.view-news.view-display-teaser .full-width{ padding:30px; margin-bottom:20px; background:center 0 no-repeat; background-size:auto 100%; min-height:290px}
+.view-news.view-display-teaser .full-width{ padding:30px; margin:0 auto 20px auto; background:center 0 no-repeat; background-size:auto 100%; min-height:290px; max-width:1340px}
 .view-news.view-display-teaser .info-box{ max-width:400px; min-height:210px}
 .view-news.view-display-teaser h2{ margin-top:0;}
 .view-news.view-display-teaser .field-name-field-intro{ margin:0 0 40px; padding:0; background:none}

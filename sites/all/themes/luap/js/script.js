@@ -31,7 +31,7 @@ Drupal.behaviors.my_custom_behavior = {
 			case 'open-nav':
 				$(this).attr('class','close-nav');
 				$('body').addClass('menu-open');
-				$('#filter-toggle span').addClass('fade');
+				$('#filter-toggle span.cover').addClass('fade');
 				if($('#page').height() < $('#nav').height()){
 					$('#page').height($('#nav').height());
 				}
@@ -39,7 +39,7 @@ Drupal.behaviors.my_custom_behavior = {
 			case 'close-nav':
 				$(this).attr('class','open-nav');
 				$('body').removeClass('menu-open');
-				$('#filter-toggle span').removeClass('fade');
+				$('#filter-toggle span.cover').removeClass('fade');
 				$('#page').height('');
 			break;
 		}
@@ -83,7 +83,6 @@ Drupal.behaviors.my_custom_behavior = {
 	
 	// PRESS THUMBS SQUARE
 	//---------------------------
-	
 	squareBox = function(){
 		// Match height to width so css height:100% works as intended
 		$('.view-news.view-display-id-press .thumb .inner').each( function(){
@@ -113,6 +112,15 @@ Drupal.behaviors.my_custom_behavior = {
 	}
 	
 	
+	// EXHIBITIONS
+	//---------------------------
+	if($('body').hasClass('page-node-21')){
+		if($('.region-content-above').length > 0){
+			$('#block-views-page-image-block').hide();
+		}
+	}
+	
+	
 	// ARTWORK NODE PAGE
 	//---------------------------
 	
@@ -120,7 +128,13 @@ Drupal.behaviors.my_custom_behavior = {
 	function artworkResize(offsetY){
 		winH = $(window).height();
 		winW = $(window).width();
+		$('#artwork .artwork-pager').height(winH);
+		
 		$('#artwork-image').waitForImages( function(){
+
+			// Set height of pager arrows to window height
+			$('#artwork .artwork-pager').height(winH-$('#artwork-info-bar').height());
+			
 			// Set divs to height of page and align info bar to bottom
 			$('#artwork-image, #artwork-image div').height(winH-offsetY);
 			if(winW <= 480 && winW > 360){
@@ -129,12 +143,13 @@ Drupal.behaviors.my_custom_behavior = {
 			if(winW <= 360){
 				$('#artwork-image, #artwork-image div').height(winH-offsetY+57);
 			}
+			
 			// Center image to page
 			$('#artwork-image img').css('margin-top', ($('#artwork-image').height() - $('#artwork-image img').height()) / 2 +'px' );
+			
 			// Set page height to popup height
-			$('#page').height($('#artwork').height());
+			$('#page').height($('#artwork').height()-10);
 		});
-		$('#artwork .artwork-pager').css('top',(winH - $('#artwork-info-bar').height())/2+'px');
 	}
 	
 	// add click event to read more link
@@ -157,6 +172,7 @@ Drupal.behaviors.my_custom_behavior = {
 	
 	// Close artwork lightbox
 	$('#artwork .close').click( function(){
+		$('body').removeClass('popup');
 		$('#artwork').removeClass('active').addClass('notloaded');
 		$('#page-content').removeClass('fade');
 		$('#artwork #load').html('');
@@ -196,7 +212,7 @@ Drupal.behaviors.my_custom_behavior = {
 		var obj = $(this);
 		var path = obj.attr('href');
 		yPos = $(document).scrollTop();
-		$('body').addClass('loading');
+		$('body').addClass('loading').addClass('popup');
 		$('#loading').css('top',obj.offset().top-15+'px').css('left',(obj.offset().left + (obj.width()/2))+'px');
 		if($('#artwork').hasClass('notloaded')){
 			$('#artwork').removeClass('notloaded');

@@ -21,6 +21,7 @@ stylesheets[all][] = system.theme.css
 stylesheets[all][] = css/styles.css
 
 
+scripts[] = js/mobile-scroll.js
 scripts[] = js/jquery.fitvids.js
 scripts[] = js/jquery.waitforimages.js
 scripts[] = js/script.js

@@ -32,10 +32,11 @@
   <div id="loading"></div>
   
   <div id="toggles" class="transition width">
-  	<div id="menu-toggle" class="toggle transition"><a class="open-nav" href="#">Menu</a><span></span></div>
+  	<div id="menu-toggle" class="toggle transition"><a class="open-nav" href="#">Menu</a><span class="cover"></span></div>
     <?php if(isset($node) && in_array($node->nid, $filterIDS)):?>
 	<div id="filter-toggle" class="toggle transition">
-		<a class="open-filter" href="#">Filter 
+        <a class="open-filter" href="#">Filter 
+		<span class="type">
 		<?php 
 			switch($node->nid){
 				case 31:
@@ -47,8 +48,9 @@
 				break;
 			}
 		?>
+        </span>
 		</a>
-        <span></span>
+        <span class="cover"></span>
 	</div>
 	<?php endif; ?>
   </div>

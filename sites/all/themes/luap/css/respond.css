@@ -2,16 +2,28 @@
 /* ------------------------------ */
 /* DESKTOP LARGE
 /* ------------------------------ */
-@media (max-width: 1400px) {
 
-/* MAIN LAYOUT 
-/* ------------------------------ */
-.width{ margin:0 70px}
+@media (min-width: 1601px) {
+
+#main, #header, #toggles{ transform:translate3d(0,0,0); max-width:83%; margin-left:2%; margin-right:2%}
+#menu-toggle{ display:none}
+#nav, #filter{ right:-13%; width:13%}
+#nav{ right:0; }
+
+.filter-open #header, .filter-open #toggles, .filter-open #main,
+.filter-open #loading{ transform:translate3d(-0,0,0); -o-transform: translate3d(-0,0,0); -ms-transform: translate3d(-0,0,0); -moz-transform: translate3d(-0,0,0); -webkit-transform: translate3d(-0,0,0); }
+.filter-open #filter{ transform:translate3d(-100%,0,0); -o-transform: translate3d(-100%,0,0); -ms-transform: translate3d(-100%,0,0); -moz-transform: translate3d(-100%,0,0); -webkit-transform: translate3d(-100%,0,0); }
+
+.filter-open #page-content{ transform:translate3d(0,0,0); -o-transform: translate3d(0,0,0); -ms-transform: translate3d(0,0,0); -moz-transform: translate3d(0,0,0); -webkit-transform: translate3d(0,0,0); margin-right:0 }
+
+.thumb{ width:16.66%}
+
+}
 
 
-/* PAGE ELEMENTS
-/* ------------------------------ */
-.info-bar{ margin:0 -70px; }
+@media (max-width: 1600px) {
+
+
 
 }
 
@@ -156,7 +168,7 @@
 .info-bar .arrow, .info-bar #share{ float:none; }
 	
 /* TOGGLES */
-#project-info #project-info-toggle a{ max-width:130px; text-align:left;}
+#filter-toggle .type{ display:none}
 	
 }
 
