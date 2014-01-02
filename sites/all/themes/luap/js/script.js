@@ -2,15 +2,20 @@
  * @file
  * A JavaScript file for the theme.
  */
-
+/*
 (function ($, Drupal, window, document, undefined) {
 
 
 // To understand behaviors, see https://drupal.org/node/756722#behaviors
 Drupal.behaviors.my_custom_behavior = {
-  attach: function(context, settings) {
+  attach: function(context, settings) { */
 
+jQuery.noConflict();
+(function( $ ) {
+$(function() {
+$(document).ready(function() {
     
+
 	// EXTERNAL LINKS
 	//---------------------------
 	$('a[rel*=external]').click(function(){
@@ -32,7 +37,7 @@ Drupal.behaviors.my_custom_behavior = {
 				$(this).attr('class','close-nav');
 				$('body').addClass('menu-open');
 				$('#filter-toggle span.cover').addClass('fade');
-				if($('#page').height() < $('#nav').height()){
+				if($('#page').height() <= $('#nav').height()){
 					$('#page').height($('#nav').height());
 				}
 			break;
@@ -52,7 +57,9 @@ Drupal.behaviors.my_custom_behavior = {
 				$(this).attr('class','close-filter');
 				$('body').addClass('filter-open');
 				$('#menu-toggle span').addClass('fade');
-				if($('#page').height() < $('#filter').height()){
+				console.log($('#page').height());
+				console.log($('#filter').height());
+				if($('#page').height() <= $('#filter').height()){
 					$('#page').height($('#filter').height());
 				}
 			break;
@@ -128,13 +135,9 @@ Drupal.behaviors.my_custom_behavior = {
 	function artworkResize(offsetY){
 		winH = $(window).height();
 		winW = $(window).width();
-		$('#artwork .artwork-pager').height(winH);
-		
+		// Set height of pager arrows to window height
+		$('#artwork .artwork-pager').height(winH-$('#artwork-info-bar').height());
 		$('#artwork-image').waitForImages( function(){
-
-			// Set height of pager arrows to window height
-			$('#artwork .artwork-pager').height(winH-$('#artwork-info-bar').height());
-			
 			// Set divs to height of page and align info bar to bottom
 			$('#artwork-image, #artwork-image div').height(winH-offsetY);
 			if(winW <= 600 && winW > 400){
@@ -143,10 +146,8 @@ Drupal.behaviors.my_custom_behavior = {
 			if(winW <= 400){
 				$('#artwork-image, #artwork-image div').height(winH-offsetY+57);
 			}
-			
 			// Center image to page
 			$('#artwork-image img').css('margin-top', ($('#artwork-image').height() - $('#artwork-image img').height()) / 2 +'px' );
-			
 			// Set page height to popup height
 			$('#page').height($('#artwork').height()-10);
 		});
@@ -186,6 +187,7 @@ Drupal.behaviors.my_custom_behavior = {
 		var prev = $('#artwork-'+nid).parents('.views-row').prevAll(":visible:first");
 		var next = $('#artwork-'+nid).parents('.views-row').nextAll(":visible:first");
 		$('body').addClass('loading-artwork');
+		$('#loading').css('top', ($(window).height()/2) - ($('#artwork-info-bar').height()/2) +'px' );
 		switch($(this).attr('id')){
 			case 'artwork-prev':
 				// If no previous, show last
@@ -213,7 +215,9 @@ Drupal.behaviors.my_custom_behavior = {
 		var path = obj.attr('href');
 		yPos = $(document).scrollTop();
 		$('body').addClass('loading').addClass('popup');
-		$('#loading').css('top',obj.offset().top-15+'px').css('left',(obj.offset().left + (obj.width()/2))+'px');
+		if(!$('body').hasClass('loading-artwork')){
+			$('#loading').css('top', (obj.offset().top) + (obj.height()/2) +'px').css('left',obj.offset().left + (obj.width()/2))+'px';
+		}
 		if($('#artwork').hasClass('notloaded')){
 			$('#artwork').removeClass('notloaded');
 		}else{
@@ -225,14 +229,13 @@ Drupal.behaviors.my_custom_behavior = {
 			// pass ajax response type to load stripped down ajax template
 			data: { response_type: 'ajax' },
 			success: function(html) {
-				$('#loading').css('top','22px').css('left','50%');
 				$('#artwork').removeClass('fade').addClass('active');
 				$('#artwork #load').html(html);
+				$('#loading').css('top', ($(window).height()/2) - ($('#artwork-info-bar').height()/2) +'px' ).css('left','50%');
 				$('#artwork-image, #artwork-image div').height($(window).height());
 				$('#artwork-image img').hide();
 				$('#artwork-image').waitForImages( function(){
 					$('body').removeClass('loading').removeClass('loading-artwork');
-					$('#loading').css('top','85px').css('left','50%');
 					$('#artwork-image img').fadeIn();
 				});
 				$('#page-content').addClass('fade');
@@ -300,7 +303,7 @@ Drupal.behaviors.my_custom_behavior = {
 			var path = obj.attr('href');
 			$('#page-content').addClass('fade');
 			$('body').addClass('loading');
-			$('#loading').css('top',obj.offset().top+'px').css('left',obj.offset().left-15+'px');
+			$('#loading').css('top',obj.offset().top+9+'px').css('left',obj.offset().left-15+'px');
 			
 			loadPortfolioInfo(obj);
 			
@@ -399,7 +402,7 @@ Drupal.behaviors.my_custom_behavior = {
 		}
 		// Or displayed all hidden/filtered artworks
 		else{
-			$('.artwork').parent().show('fast');
+			$('.artwork').parents('.views-row').show();
 		}
 		switch(filter){
 			case 'disciplines':
@@ -553,10 +556,15 @@ Drupal.behaviors.my_custom_behavior = {
 		}
 	}
 
-	
 
+
+});
+});
+})(jQuery);
+	
+/*
   }
 };
 
 
-})(jQuery, Drupal, this, this.document);
+})(jQuery, Drupal, this, this.document); */

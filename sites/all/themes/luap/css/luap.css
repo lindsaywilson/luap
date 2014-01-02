@@ -71,10 +71,10 @@ body{ color:#000; font-family:'VolkswagenMed'; font-size:62.5%; -webkit-font-smo
 #overlay{ position:absolute; top:0; left:0; width:100%; height:100%; opacity:0; z-index:0; background:#fff}
 .loading #overlay{ opacity:0.4; z-index:4}
 
-#loading{ position:absolute; width:15px; top:85px; left:50%; margin-left:-7px; height:15px; background:url(../images/ajax-loader.gif) 50% 0 no-repeat; display:none; z-index:999; opacity:0 }
+#loading{ position:absolute; width:15px; top:85px; left:50%; margin:-12px 0 0 -12px; height:15px; background:#fff url(../images/ajax-loader.gif) center center no-repeat; display:none; z-index:999; opacity:0; padding:5px; border-radius:30px }
 .loading #loading,
 .loading-artwork #loading{ opacity:1; display:block}
-.loading-artwork #loading{ top:22px!important; left:50%!important;;}
+.loading-artwork #loading{ left:50%!important;}
 
 #header, #toggles, #main{ z-index:1}
 #nav, #filter{ z-index:3}

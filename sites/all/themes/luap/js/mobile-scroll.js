@@ -36,9 +36,12 @@ function mobileScroll(){
 	}
 }
 mobileScroll();
+
 // Listen for orientation changes and reset to top if popup open
 window.addEventListener("orientationchange", function() {
-	mobileScroll();
+	if(jQuery('body').hasClass('popup') || jQuery('body').hasClass('node-type-artwork')){
+		mobileScroll();
+	}
 }, false);
 	
 })( this );
