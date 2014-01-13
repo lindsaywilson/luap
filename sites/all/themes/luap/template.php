@@ -45,6 +45,12 @@ function luap_preprocess_html(&$variables, $hook) {
   // The body tag's classes are controlled by the $classes_array variable. To
   // remove a class from $classes_array, use array_diff().
   //$variables['classes_array'] = array_diff($variables['classes_array'], array('class-to-remove'));
+  $arg = explode('/', $_GET['q']);
+  if ($arg[0] == 'node' && isset($arg[1])) {
+      if ($arg[1] == '31' || $arg[1] == '32') {
+      	$variables['classes_array'][] = 'page-images';
+      }
+    }
 }
 // */
 
@@ -87,13 +93,6 @@ function luap_preprocess_page(&$variables, $hook) {
  */
 
 function luap_preprocess_node(&$variables, $hook) {
-
-	switch($variables['nid']){
-		case 31:
-		case 32:
-			drupal_add_js('/sites/all/libraries/lightbox/lightbox.js');
-		break;
-	}
 	
 	/*switch($variables['type']){
 		case 'news_press':

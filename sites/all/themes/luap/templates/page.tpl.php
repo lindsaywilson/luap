@@ -10,7 +10,7 @@
  // node IDs to display filter div on
  $filterIDS = array(31, 32, 33);
 ?>
-<?php if(isset($node) && $node->nid == 33): ?>
+<?php if(isset($node) && in_array($node->nid, $filterIDS)): ?>
 <div id="artwork" class="transition notloaded">
     <div class="inner">
     <a class="close">Close</a>

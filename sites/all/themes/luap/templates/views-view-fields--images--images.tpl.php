@@ -30,10 +30,14 @@
 		
 		case 'field-images-1':
 		case 'field-images-2':
+		case 'title':
+		case 'delta':
 		break;
 		
 		case 'field-images':
-			print '<a href="'.$fields['field_images_2']->content.'" data-lightbox="images" title="'.$fields['field_images_1']->content.'"><img src="'.$field->content.'" /></a>';
+			$title = str_replace(' ','-', $fields['title']->content);
+			$title .= '-'.$fields['delta']->content;
+			print '<a class="image" id="'.$title.'" data-nid="'.$title.'" href="'.$fields['field_images_2']->content.'" title="'.$fields['field_images_1']->content.'"><img src="'.$field->content.'" /></a>';
 		break;
 		
 		default:

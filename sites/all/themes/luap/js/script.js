@@ -143,8 +143,11 @@ $(document).ready(function() {
 			if(winW <= 600 && winW > 400){
 				$('#artwork-image, #artwork-image div').height(winH-offsetY+80);
 			}
-			if(winW <= 400){
+			if(winW <= 400 && $('body').hasClass('page-node-33')){
 				$('#artwork-image, #artwork-image div').height(winH-offsetY+57);
+			}
+			if(winW <= 400 && $('body').hasClass('page-images')){
+				$('#artwork-image, #artwork-image div').height(winH-offsetY+84);
 			}
 			// Center image to page
 			$('#artwork-image img').css('margin-top', ($('#artwork-image').height() - $('#artwork-image img').height()) / 2 +'px' );
@@ -182,7 +185,7 @@ $(document).ready(function() {
 		return false;
 	});
 	// Artwork lightbox prev/next pager
-	$('#artwork .artwork-pager').click( function(){
+	$('.page-node-33 #artwork .artwork-pager').click( function(){
 		var nid = $(this).attr('rel');
 		var prev = $('#artwork-'+nid).parents('.views-row').prevAll(":visible:first");
 		var next = $('#artwork-'+nid).parents('.views-row').nextAll(":visible:first");
@@ -517,6 +520,63 @@ $(document).ready(function() {
 	}
 	
 	
+	// IMAGES LIGHTBOX POPUP
+	//---------------------------
+	
+	// Images lightbox prev/next pager
+	$('.page-images #artwork .artwork-pager').click( function(){
+		var nid = $(this).attr('rel');
+		var prev = $('#'+nid).parents('.views-row').prev();
+		var next = $('#'+nid).parents('.views-row').next();
+		$('body').addClass('loading-artwork');
+		$('#loading').css('top', ($(window).height()/2) - ($('#artwork-info-bar').height()/2) +'px' );
+		switch($(this).attr('id')){
+			case 'artwork-prev':
+				// If no previous, show last
+				if(prev.length === 0){
+					$('.view-images .views-row-last').find('.image').click();
+				}else{
+					prev.find('.image').click();
+				}
+			break;
+			case 'artwork-next':
+			// If no next, show first
+				if(next.length === 0){
+					$('.view-images .views-row-first').find('.image').click();
+				}else{
+					next.find('.image').click();
+				}
+			break;
+		}
+		return false;
+	});
+	
+	// .image click function
+	function imagesPopup() {
+		var obj = $(this);
+		var path = obj.attr('href');
+		yPos = $(document).scrollTop();
+		$('body').addClass('loading').addClass('popup');
+		$('#artwork').removeClass('notloaded').addClass('active');
+		$('#artwork #load').html('<div id="artwork-image"><img src="'+path+'" /></div>');
+		$('#artwork #load').append('<div id="artwork-info-bar" class="info-bar"><div class="inner clearfix"><span class="arrow">'+obj.attr('title')+'</span></div></div>');
+		$('#loading').css('top', ($(window).height()/2) - ($('#artwork-info-bar').height()/2) +'px' ).css('left','50%');
+		$('#artwork-image, #artwork-image div').height($(window).height());
+		$('#artwork-image img').hide();
+		$('#artwork-image').waitForImages( function(){
+			$('body').removeClass('loading').removeClass('loading-artwork');
+			$('#artwork-image img').fadeIn();
+		});
+		$('#page-content').addClass('fade');
+		artworkResize(160);
+		$(document).scrollTop(0);	
+		// Set pagers rel to nid to setup prev/next links
+		$('#artwork .artwork-pager').attr('rel',obj.data('nid'));
+		return false;
+	};
+	$('.image').on('click', imagesPopup );
+	
+	
 	// IMAGES FILTER AJAX
 	//---------------------------
 	$('.view-images.view-display-id-filter .view-content a').click( function(){
@@ -525,7 +585,7 @@ $(document).ready(function() {
 		var path = obj.attr('href');
 		$('#page-content').addClass('fade');
 		$('body').addClass('loading');
-		$('#loading').css('top',obj.offset().top+'px').css('left',obj.offset().left-15+'px');
+		$('#loading').css('top',obj.offset().top+9+'px').css('left',obj.offset().left-15+'px');
 		
 		$.ajax({
             type: 'GET',
@@ -541,6 +601,7 @@ $(document).ready(function() {
 				$('#node-content').html(html);
 				hash = path.split("/"); 
 				window.location.hash = '#/'+hash[1];
+				$('.image').on('click', imagesPopup );
 				
 			}
         });
@@ -549,11 +610,16 @@ $(document).ready(function() {
 	});
 	
 	// Check for url hash and load content
-	if($('body').hasClass('page-node-31')){
+	if($('body').hasClass('page-images')){
 		if(window.location.hash && window.location.hash != ''){
 			hash = window.location.hash.substring(2);
 			$('a.'+hash).click();
 		}
+		
+		// setup artwork resize function
+		$(window).resize( function(){
+			artworkResize(150)
+		})
 	}
 
 

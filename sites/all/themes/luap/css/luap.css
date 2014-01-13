@@ -275,6 +275,11 @@ ul.tabs-primary li a:hover{ opacity:0.6}
 #artwork-project-details{ text-align:center; max-width:560px; margin:0 auto 50px; }
 .node-artwork h2{ margin-bottom:15px}
 
+/* IMAGES POPUP */
+.page-images #artwork-info-bar{ text-align:center; position:fixed; left:0; bottom:0; margin:0; width:100%; background:#fff; padding-bottom:12px}
+.page-images #artwork-info-bar:after{ display:none}
+.page-images .info-bar .arrow{ float:none}
+
 
 /* NEWS/PRESS 
 ----------------------------------*/
