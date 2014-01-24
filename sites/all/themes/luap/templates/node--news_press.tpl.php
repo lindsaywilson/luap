@@ -15,13 +15,24 @@
 
 	<?php print render($content['field_intro']); ?>
     
-	<a href="https://twitter.com/share" class="twitter-share-button" data-lang="en">Tweet</a>
-	<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="https://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
-    <div class="fb-like" data-layout="button_count" data-action="like" data-show-faces="false" data-share="false"></div>
+    <div id="share-like">
+        <a href="https://twitter.com/share" class="twitter-share-button" data-lang="en">Tweet</a>
+        <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="https://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+        <div class="fb-like" data-layout="button_count" data-action="like" data-show-faces="false" data-share="false"></div>
+    </div>
     
     <?php print render($content['body']); ?>
     
     <?php print render($content['field_extra_content']); ?>
+    
+    <div id="tags">
+    	<div class="arrow after">More</div>
+        <ul>
+		<?php foreach($node->field_tags['und'] as &$tid): ?>
+			<li><a href="/latest-news/<?php print strtolower(str_replace(' ', '-', $tid['taxonomy_term']->name)) ?>"><?php print $tid['taxonomy_term']->name ?></a></li>
+		<?php endforeach; ?>
+        </ul>
+    </div>
     
     <div id="news-info-bar" class="info-bar">
     <div class="inner width clearfix">

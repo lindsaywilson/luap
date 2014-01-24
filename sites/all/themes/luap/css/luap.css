@@ -16,7 +16,8 @@ body{ color:#000; font-family:'VolkswagenMed'; font-size:62.5%; -webkit-font-smo
 #logo img{ display:none}
 #logo{ background:url(../images/logo.png); width:92px; height:27px; display:inline-block; }
 
-.sidebar-first #page-content{ float:left; width:52%}
+.sidebar-first #page-content,
+.sidebar-first h1#page-title{ float:left; width:52%}
 .sidebar-first #sidebar{ float:right; width:48%}
 .sidebar-first #sidebar > .inner{ padding-left:50px}
 
@@ -65,7 +66,7 @@ body{ color:#000; font-family:'VolkswagenMed'; font-size:62.5%; -webkit-font-smo
 #menu-toggle a.close-nav:after{ background-position:-31px 0}
 #filter-toggle a:after{ background-position:0 -40px; width:33px; height:27px; }
 #filter-toggle a.close-filter:after{ background-position:-40px -40px}
-#floating-filter-toggle{ position:fixed; right:85px; top:0; opacity:0; background:url(../images/sprite.png) 11px -28px; width:50px; height:50px; border-radius:50px; border:1px solid #000; cursor:pointer }
+#floating-filter-toggle{ position:fixed; right:85px; top:0; opacity:0; background:#fff url(../images/sprite.png) 11px -28px; width:50px; height:50px; border-radius:50px; border:1px solid #000; cursor:pointer }
 .floating-toggle #toggles{ z-index:2}
 .floating-toggle #floating-filter-toggle{ top:15px; opacity:1}
 .filter-open #floating-filter-toggle{ display:none}
@@ -159,6 +160,8 @@ img{ vertical-align:middle}
 .arrow:before{ content:''; display:block; position:absolute; left:-30px; top:1px; background:url(../images/sprite.png) -50px -80px; width:30px; height:12px}
 .arrow.down:before{ background-position:-30px -80px; width:12px; height:21px; left:-25px; top:-4px}
 .arrow.right:before{ left:auto; right:-40px}
+.arrow.after:before{ left:auto; right:-36px; top:3px }
+.arrow.after{ margin-right:40px}
 a.arrow{ text-decoration:none}
 a.arrow:hover{ text-decoration:underline}
 h2 .arrow{ font-size:1em}
@@ -229,10 +232,13 @@ ul.tabs-primary li a:hover{ opacity:0.6}
 
 /* FRONT 
 ----------------------------------*/
+.front #main{ margin:0}
 .front #overlay{ opacity:1; }
 .front #overlay .backstretch img{ left:auto !important; right:0 !important}
-.front #header{ display:none}
-.front #nav{ right:0; height:100%}
+.front #header,
+.front #sidebar,
+.front #page-content{ display:none}
+.front #nav{ right:0; height:100% !important; position:relative; float:right;}
 .front #nav:before{ left:-5px}
 .front #nav > .inner{ margin-left:-4px}
 
@@ -293,6 +299,10 @@ ul.tabs-primary li a:hover{ opacity:0.6}
 
 /* NEWS/PRESS 
 ----------------------------------*/
+.node-news-press .field-name-field-intro{ background:none; padding:0; margin:0}
+#share-like{ padding-top:30px}
+.node-news-press .field-name-body{ background:url(../images/line.png) left top no-repeat, url(../images/line.png) left bottom no-repeat; padding-top:50px; margin-top:45px}
+.node-news-press .field-name-body h2{ margin-top:0}
 #artwork-reference{ margin:0 auto; max-width:250px; text-align:center}
 #artwork-reference h2{ margin-bottom:10px}
 #artwork-reference .arrow{ font-family:'VolkswagenMed'}
@@ -300,6 +310,10 @@ ul.tabs-primary li a:hover{ opacity:0.6}
 .field-name-field-extra-content .field-name-field-intro p{ font-family:'Dado'; font-size:1.2em; margin-bottom:15px}
 .field-collection-view{ margin:0 0 35px; padding:0; border:none}
 .field-collection-container{ margin:0; padding:0; border:none}
+#tags{ margin-bottom:30px}
+#tags ul, #tags li{margin:0; padding:0; list-style:none; display:inline}
+#tags a{ background:#000; color:#fff; display:inline-block; text-decoration:none; padding:3px 7px}
+#tags a:hover{ opacity:0.9}
 #news-info-bar{ position:fixed; bottom:-10px; left:0; width:100%; margin:0; background:#fff; z-index:1}
 #news-info-bar .inner{ padding:12px 0 10px}
 

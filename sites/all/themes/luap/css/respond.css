@@ -96,17 +96,21 @@
 @media (max-width: 740px) {
 	
 /* FRONT */
-.front #main{ display:none}
 .front #overlay{ position:fixed !important; width:100% !important}
 .front #logo{ margin-left:0}
-.front #toggles{display:block;}
-.front .toggle a{ color:#fff}
-.front #nav{ right:-190px; }
+.front #toggles{display:block; margin:0; z-index:2}
+.front #menu-toggle{ top:0; width:124px; }
+.front #menu-toggle:before{ background:url(../images/home_menu.png); width:124px; height:70px; display:block; content:''; position:absolute; top:0; left:0}
+.front #menu-toggle a{ position:relative;top:10px; left:37px}
+.front #nav{ right:-190px; position:absolute }
+.front.menu-open #nav{ position:relative; float:right;}
 .front #nav > .inner{ margin-left:0}
-.front.menu-open #nav > .inner{ margin-left:-8px}
+.front.menu-open #nav > .inner{ margin-left:-5px}
 .front #nav:before{ left:0}
-.front.menu-open #nav:before{ left:-8px}
-.front #home{ position:relative; margin:0 20px 20px; max-width:100%; left:0; bottom:0; text-align:center}
+.front.menu-open #nav:before{ left:-5px}
+.front #home{ position:relative; bottom:auto; margin:0 0 20px; max-width:100%; left:0; bottom:0; text-align:center}
+.front.menu-open #home{ display:none}
+.front #logo-home{ padding:0 20px}
 .front .view-news.view-display-teaser .info-box{ min-height:inherit; max-width:inherit}
 
 }
@@ -119,7 +123,8 @@
 .width{ margin:0 10px}
 
 .sidebar-first #page-content,
-.sidebar-first #sidebar{ float:none; width:auto;}
+.sidebar-first #sidebar,
+.sidebar-first h1#page-title{ float:none; width:auto;}
 .sidebar-first #sidebar{ margin:0 auto 30px; max-width:280px}
 .sidebar-first #sidebar > .inner{ padding-left:0}
 

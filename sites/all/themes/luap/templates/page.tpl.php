@@ -95,6 +95,16 @@
 	  <?php print $messages; ?>
       
       <a id="main-content"></a>
+      
+      <?php if($is_front):?>
+        <div id="home">
+            <div id="logo-home"><img src="<?php print path_to_theme(); ?>/images/logo_home.png" /></div>
+            <?php
+            $block = module_invoke('views', 'block_view', 'news-home');
+            print render($block);
+        ?>
+        </div>
+      <?php endif; ?>
 	  
       <?php if ( 
 	  			(isset($node) && $node->type == 'page' && $node->field_display_title['und'][0]['value'] == 1) ||
@@ -156,16 +166,6 @@
     </div>
 
   </div>
-  
-  <?php if($is_front):?>
-	<div id="home">
-        <div id="logo-home"><img src="<?php print path_to_theme(); ?>/images/logo_home.png" /></div>
-        <?php
-        $block = module_invoke('views', 'block_view', 'news-home');
-        print render($block);
-	?>
-    </div>
-  <?php endif; ?>
   
   <div id="overlay" class="transition"></div>
 
