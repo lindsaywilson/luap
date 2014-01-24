@@ -7,7 +7,7 @@
 html, body{ height:100%}
 body{ color:#000; font-family:'VolkswagenMed'; font-size:62.5%; -webkit-font-smoothing: antialiased;}
 #page{ position:relative; overflow:hidden; min-height:100%}
-#header{ padding:20px 0; text-align:center; background:url(../images/line.png) center bottom no-repeat; background-size:100% 10px; position:relative}
+#header{ padding:20px 0; text-align:center; background:url(../images/line.png) center bottom no-repeat; position:relative}
 #main{ position:relative; margin-top:60px; margin-bottom:80px}
 .width{ margin:0 70px; max-width:1600px; }
 #content > .inner{ position:relative;}
@@ -26,18 +26,28 @@ body{ color:#000; font-family:'VolkswagenMed'; font-size:62.5%; -webkit-font-smo
 /* ------------------------------ */
 
 #nav, #filter{ background:#fff; width:190px; position:absolute; top:0; right:-190px}
-#nav:before, #filter:before{ content:''; display:block; background:url(../images/line_vert.png) no-repeat; position:absolute; left:0; top:0; width:8px; height:100%;}
-.front #nav:before{ left:-8px}
+#nav:before, #filter:before{ content:''; display:block; background:url(../images/line_vert.png) repeat-y; position:absolute; left:0; top:0; width:5px; height:100%;}
 #nav > .inner{ padding-top:25px}
 #nav ul.menu, #nav ul.menu li{ margin:0; padding:0; list-style:none;}
 #nav ul.menu{ font-size:1.5em; margin-bottom:40px}
 #nav ul.menu li{ padding-left:30px; font-weight:bold; position:relative; margin-bottom:40px;}
-#nav ul.menu li:before{ content:''; position:absolute; left:2px; top:4px; width:19px; height:12px; background:url(../images/sprite.png) -90px 0}
-#nav ul.menu li a{ text-decoration:none}
+#nav ul.menu li:before{ content:''; position:absolute; left:2px; top:4px; width:21px; height:12px; background:url(../images/arrow_nav.png) 0 0 no-repeat}
+#nav ul.menu li a{ text-decoration:none; display:block; margin-bottom:8px}
 #nav ul.menu li a:hover{ text-decoration:underline}
-#nav ul.menu ul{ font-size:1em; margin:0}
+#nav ul.menu ul{ font-size:1em; margin:0; font-family:'VolkswagenReg'}
 #nav ul.menu ul li{ padding-left:0; margin-bottom:0; background:none; font-weight:normal}
 #nav ul.menu ul li:before{ display:none}
+
+#social{ padding-left:30px}
+#social .title{ font-family:'Dado'; font-size:1.2em; margin-bottom:15px}
+#social ul, #social ul li{ margin:0; padding:0; list-style:none}
+#social ul li{ float:left;}
+#social ul li a{ background:url(../images/sprite.png); height:25px; display:block; text-indent:-999em; margin:0 20px 20px 0}
+#social ul li a.social_twitter{ width:28px; background-position:0 -140px}
+#social ul li a.social_tumblr{ width:14px; background-position:-40px -140px}
+#social ul li a.social_pinterest{ width:24px; background-position:-80px -140px}
+#social ul li a.social_facebook{ width:13px; background-position:-120px -140px; margin-right:0}
+#social ul li a.social_instagram{ width:23px; background-position:-160px -140px}
 
 
 /* TOGGLES
@@ -45,23 +55,27 @@ body{ color:#000; font-family:'VolkswagenMed'; font-size:62.5%; -webkit-font-smo
 
 #toggles{ position:relative}
 .toggle{ position:absolute; top:15px; right:0; } 
-.toggle a{ font-family:'VolkswagenReg'; font-size:1.5em; text-decoration:none; position:relative; height:24px; display:inline-block;padding-right:35px; z-index:1  }
+.toggle a{ font-family:'VolkswagenReg'; font-size:1.5em; text-decoration:none; position:relative; height:24px; display:inline-block;padding-right:40px; z-index:1  }
 .toggle a:after{ content:''; background:url(../images/sprite.png); display:block; position:absolute; right:0; top:0;}
 .toggle span.cover{ position:absolute; z-index:0; top:0; left:0; background:#fff; width:100%; height:100%; opacity:0}
 .toggle span.fade{ opacity:.6; z-index:2}
 
 #menu-toggle{ top:-55px}
-#menu-toggle a:after{ width:27px; height:24px; }
-#menu-toggle a.close-nav:after{ background-position:-30px 0}
-#filter-toggle a:after{ background-position:-130px 0; width:29px; height:25px; }
-#filter-toggle a.close-filter:after{ background-position:-160px 0}
+#menu-toggle a:after{ width:31px; height:30px; top:-2px }
+#menu-toggle a.close-nav:after{ background-position:-31px 0}
+#filter-toggle a:after{ background-position:0 -40px; width:33px; height:27px; }
+#filter-toggle a.close-filter:after{ background-position:-40px -40px}
+#floating-filter-toggle{ position:fixed; right:85px; top:0; opacity:0; background:url(../images/sprite.png) 11px -28px; width:50px; height:50px; border-radius:50px; border:1px solid #000; cursor:pointer }
+.floating-toggle #toggles{ z-index:2}
+.floating-toggle #floating-filter-toggle{ top:15px; opacity:1}
+.filter-open #floating-filter-toggle{ display:none}
 
 #project-info{ text-align:center; max-width:620px; margin:0 auto; opacity:0}
 .project-info #project-info{ opacity:1; display:block}
 #project-info #project-info-toggle{ right:auto; left:25px; top:-45px}
 #project-info #project-info-toggle a{ display:block}
-#project-info #project-info-toggle a:after{ width:14px; height:19px; background-position: -110px 0; left:-25px; top:3px}
-#project-info #project-info-toggle a.close:after{ background-position:-190px 0; width:19px; height:17px; }
+#project-info #project-info-toggle a:after{ width:12px; height:21px; background-position: -30px -80px; left:-25px; top:2px}
+#project-info #project-info-toggle a.close:after{ background-position:0 -80px; width:22px; height:18px; }
 #project-info #project-info-toggle span{ display:inline; position:relative; opacity:1}
 #project-info #project-info-toggle .close span.read-about{ display:none}
 #project-info #project-info-description{ opacity:0; display:none}
@@ -102,7 +116,7 @@ body{ color:#000; font-family:'VolkswagenMed'; font-size:62.5%; -webkit-font-smo
 #filter ul, #filter ul li{ margin:0; padding:0; list-style:none;}
 #filter p, #filter ul{ font-size:1.5em;  }
 #filter p.filter-title{ padding-left:30px; font-weight:bold; position:relative}
-#filter p.filter-title:before{ content:''; position:absolute; left:2px; top:4px; width:19px; height:12px; background:url(../images/sprite.png) -90px 0}
+#filter p.filter-title:before{ content:''; position:absolute; left:2px; top:4px; width:21px; height:12px; background:url(../images/arrow_nav.png) 0 0 no-repeat}
 #filter ul.reset{ margin-bottom:15px}
 #filter ul.filter{ margin-bottom:40px}
 #filter ul li{ padding-left:30px}
@@ -117,7 +131,7 @@ body{ color:#000; font-family:'VolkswagenMed'; font-size:62.5%; -webkit-font-smo
 /* HTML ELEMENTS
 /* ------------------------------ */
 
-h1, h2, h3, h4, h5{ font-weight:normal; line-height:1}
+h1, h2, h3, h4, h5{ font-weight:normal; line-height:1.25}
 h1{ font-size:3em; margin:0 0 25px}
 h2{ font-size:2em; margin:40px 0 20px}
 h3{ font-size:1.6em}
@@ -142,9 +156,9 @@ img.lb-image{ max-width:none}
 img{ vertical-align:middle}
 
 .arrow{ font-family:'VolkswagenReg'; font-size:1.5em; position:relative; display:inline}
-.arrow:before{ content:''; display:block; position:absolute; left:-30px; top:1px; background:url(../images/sprite.png) -90px 0; width:19px; height:19px}
-.arrow.down:before{ background-position:-110px 0; width:12px; left:-25px; top:-2px}
-.arrow.right:before{ left:auto; right:-30px}
+.arrow:before{ content:''; display:block; position:absolute; left:-30px; top:1px; background:url(../images/sprite.png) -50px -80px; width:30px; height:12px}
+.arrow.down:before{ background-position:-30px -80px; width:12px; height:21px; left:-25px; top:-4px}
+.arrow.right:before{ left:auto; right:-40px}
 a.arrow{ text-decoration:none}
 a.arrow:hover{ text-decoration:underline}
 h2 .arrow{ font-size:1em}
@@ -173,16 +187,14 @@ ul.tabs-primary li a:hover{ opacity:0.6}
 #skip-link a,
 #skip-link a:visited {display: block; width: 100%; padding: 2px 0 3px 0; text-align: center; background-color: #666; color: #fff;}
 
-#share a:hover{ opacity:0.8}
-
 .specs{ font-family:'Dado'; font-size:1.2em}
 .info-box{ background:#fff; padding:40px}
 
 .info-bar{ line-height:1; position:relative; margin:0 -70px;}
-.info-bar .inner{ padding:8px 70px 5px;}
+.info-bar .inner{ padding:10px 70px 7px;}
 .info-bar:before,
-.info-bar:after{ content:''; display:block; background:url(../images/line.png); background-size:100% 10px; width:100%; height:10px; z-index:999}
-.info-bar:before{ position:absolute; top:-10px}
+.info-bar:after{ content:''; display:block; background:url(../images/line.png); width:100%; height:3px; z-index:999}
+.info-bar:before{ position:absolute; top:-3px}
 .info-bar .arrow{ float:left; display:inline-block}
 
 .thumb{ width:20%; text-align:center; position:relative; float:left; }
@@ -196,31 +208,19 @@ ul.tabs-primary li a:hover{ opacity:0.6}
 ----------------------------------*/
 #share{ font-family:'Dado'; font-size:1.2em}
 #share .title{ display:inline-block; position:relative; top:5px}
-#share a{ display:inline-block; text-indent:-999em; height:17px; background:url(../images/sprite.png); margin:0 4px; cursor:pointer}
-#share a.pinterest{ width:14px; background-position:0 -30px}
-#share a.twitter{ width:16px; background-position:-20px -30px}
-#share a.google{ width:13px; background-position:-40px -30px}
-#share a.facebook{ width:15px; background-position:-60px -30px}
-.info-bar #share{ float:right; position:relative; top:-6px}
+#share a{ display:inline-block; text-indent:-999em; height:22px; background:url(../images/sprite.png); cursor:pointer; opacity:0.8; position:relative; top:-3px}
+#share a:hover{ opacity:1}
+#share a.pinterest{ width:22px; background-position:0 -105px}
+#share a.twitter{ width:26px; background-position:-22px -105px}
+#share a.google{ width:23px; background-position:-48px -105px}
+#share a.facebook{ width:18px; background-position:-71px -105px}
+.info-bar #share{ float:right; position:relative; top:-2px}
 
 
 /* RESPONSIVE VIDEO
 ----------------------------------*/
 .fluid-width-video-wrapper { padding:0; position: relative; width: 100%; padding-bottom:56.25%}
 .fluid-width-video-wrapper iframe, .fluid-width-video-wrapper object, .fluid-width-video-wrapper embed { height: 100%; width: 100%; position: absolute; top: 0; left: 0;  }
-
-
-/* LIGHTBOX
-----------------------------------*/
-.lightboxOverlay{ background:#fff; opacity:1}
-.lb-data .lb-close{ background:url(../images/sprite.png) -60px 0; width:26px; height:24px; position:absolute; top:-50px; right:30px; opacity:1}
-.lb-outerContainer,
-.lightbox .lb-image{ border-radius:0}
-.lb-container{ padding:0}
-.lb-next, .lb-next:hover{ background:url(../images/arrow_right.png) right center no-repeat; right:-30px; position:relative}
-.lb-prev, .lb-prev:hover{ background:url(../images/arrow_left.png) 0 center no-repeat; left:-30px; position:relative}
-.lb-cancel{ width:15px; height:15px; background:url(../images/ajax-loader.gif) 50% 0 no-repeat; }
-.lb-details{ display:none}
 
 
 /* ------------------------------ */
@@ -230,16 +230,21 @@ ul.tabs-primary li a:hover{ opacity:0.6}
 /* FRONT 
 ----------------------------------*/
 .front #overlay{ opacity:1; }
-.front #header{ background:none; padding-bottom:0}
-.front #logo{ background:url(../images/logo_white.png); margin-left:-190px}
-.front #toggles{display:none}
+.front #overlay .backstretch img{ left:auto !important; right:0 !important}
+.front #header{ display:none}
 .front #nav{ right:0; height:100%}
-.front #nav > .inner{ margin-left:-8px}
+.front #nav:before{ left:-5px}
+.front #nav > .inner{ margin-left:-4px}
+
+.front #home{ position:absolute; bottom:70px; left:70px; z-index:99; max-width:390px}
+.view-news.view-display-id-home.view-display-teaser{ margin-top:30px}
+.view-news.view-display-id-home.view-display-teaser .field-name-field-intro{ margin-bottom:25px} 
+.view-news.view-display-id-home.view-display-teaser a.read-more{ position:static; bottom:0}
 
 
 /* PAGE 
 ----------------------------------*/
-.field-name-field-intro p{ font-size:2em; margin:0;}
+.field-name-field-intro p{ font-size:2em; margin:0; line-height:1.25}
 .field-name-field-intro,
 .node-news-press > .field-name-body,
 .line{ background:url(../images/line.png) left bottom no-repeat; padding-bottom:50px; margin-bottom:45px}
@@ -249,6 +254,7 @@ ul.tabs-primary li a:hover{ opacity:0.6}
 
 /* AGENCIES/CLIENTS */
 .page-node-61 .left{ float:left; width:50%}
+.page-node-61 h2{ margin-top:0}
 .page-node-61 .left p{ font-size:1.5em}
 /* CONTACT */
 .page-node-62 .line p{ font-size:2em;font-family:'VolkswagenReg'}
@@ -263,17 +269,21 @@ ul.tabs-primary li a:hover{ opacity:0.6}
 #artwork.fade > .inner{ opacity:0.6}
 #artwork.active{ opacity:1}
 #artwork.notloaded .close, #artwork.notloaded .artwork-pager{ display:none}
-#artwork .close{ text-indent:-999em; display:block; width:26px; height:24px; background:url(../images/sprite.png) -60px 0; position:absolute; top:20px; right:30px; z-index:30; cursor:pointer }
-#artwork .artwork-pager{ display:block; text-indent:-999em; width:35%; height:12px; position:absolute; top:0; z-index:25; cursor:pointer}
+#artwork .close{ text-indent:-999em; display:block; width:32px; height:29px; background:url(../images/sprite.png) 10px -80px; position:absolute; top:20px; right:30px; z-index:30; cursor:pointer }
+#artwork .artwork-pager{ display:block; text-indent:-999em; width:35%; height:12px; position:absolute; top:50px; z-index:25; cursor:pointer}
 #artwork #artwork-prev{ left:30px; background:url(../images/arrow_left.png) 0 50% no-repeat; }
 #artwork #artwork-next{ right:30px; background:url(../images/arrow_right.png) right 50% no-repeat;}
+#artwork #artwork-prev:hover{ left:28px}
+#artwork #artwork-next:hover{ right:28px}
 #artwork .info-bar{ margin:0 -30px}
+.artwork.fade{ opacity:0.5}
 
-#artwork-image{ text-align:center; padding-bottom:60px; max-width:1000px; margin:0 auto}
-#artwork-image img{ max-height:100%}
+#artwork-image{ text-align:center; max-width:1000px; margin:0 auto 60px; position:relative;}
+#artwork-image img{ max-height:100%; position:absolute; margin:auto; top:0; right:0; bottom:0; left:0}
+.node-artwork h2{ margin-bottom:15px}
 #artwork-details,
 #artwork-project-details{ text-align:center; max-width:560px; margin:0 auto 50px; }
-.node-artwork h2{ margin-bottom:15px}
+#artwork-project-bar:after{ display:none}
 
 /* IMAGES POPUP */
 .page-images #artwork-info-bar{ text-align:center; position:fixed; left:0; bottom:0; margin:0; width:100%; background:#fff; padding-bottom:12px}
@@ -291,7 +301,7 @@ ul.tabs-primary li a:hover{ opacity:0.6}
 .field-collection-view{ margin:0 0 35px; padding:0; border:none}
 .field-collection-container{ margin:0; padding:0; border:none}
 #news-info-bar{ position:fixed; bottom:-10px; left:0; width:100%; margin:0; background:#fff; z-index:1}
-#news-info-bar .inner{ padding-left:0; padding-right:0}
+#news-info-bar .inner{ padding:12px 0 10px}
 
 
 /* ------------------------------ */
@@ -309,12 +319,12 @@ ul.tabs-primary li a:hover{ opacity:0.6}
 
 /* LATEST NEWS 
 ----------------------------------*/
-.view-news.view-display-teaser .full-width{ padding:30px; margin:0 auto 20px auto; background:center 0 no-repeat; background-size:auto 100%; min-height:290px; max-width:1340px}
-.view-news.view-display-teaser .info-box{ max-width:400px; min-height:210px}
+.view-news.view-display-teaser .full-width{ padding:30px; margin:0 auto 20px auto; background:center center no-repeat; background-size:cover; min-height:290px; }
+.view-news.view-display-teaser .info-box{ max-width:390px; min-height:210px; position:relative}
 .view-news.view-display-teaser h2{ margin-top:0;}
-.view-news.view-display-teaser .field-name-field-intro{ margin:0 0 40px; padding:0; background:none}
-.view-news.view-display-teaser .field-name-field-intro p { font-family:'Dado'; font-size:1.2em}
-.view-news.view-display-teaser a.read-more{ font-size:1.5em; text-decoration:none}
+.view-news.view-display-teaser .field-name-field-intro{ margin:0; padding:0; background:none}
+.view-news.view-display-teaser .field-name-field-intro p { font-family:'Dado'; font-size:1.2em; line-height:1.8em}
+.view-news.view-display-teaser a.read-more{ font-size:1.5em; text-decoration:none; position:absolute; bottom:40px; line-height:1}
 .view-news.view-display-teaser a.read-more:hover{ text-decoration:underline}
 
 /* HOME */
@@ -323,15 +333,17 @@ ul.tabs-primary li a:hover{ opacity:0.6}
 
 /* PRESS COVERAGE
 ----------------------------------*/
-.view-news.view-display-id-press a.press-item{ display:block; height:100%; background:#e4e4e4 center center no-repeat; text-indent:-999em; }
+.view-news.view-display-id-press a.press-item{ display:block; height:100%; background:#e4e4e4 center center / 75% auto no-repeat; text-indent:-999em; }
 
 
 /* EXHIBITIONS
 ----------------------------------*/
 .view-exhibitions .views-row{ margin-bottom:25px}
 .view-exhibitions .views-field{ float:left}
-.view-exhibitions .views-field-title{ font-size:1.3em; line-height:1.5em; width:10%}
+.view-exhibitions .views-field-title{ font-size:1.5em; line-height:1.2; width:10%}
 .view-exhibitions .views-field-body{ width:90%}
+.view-exhibitions h3{ margin:0; font-size:1.5em}
+.view-exhibitions p{ font-size:1.3em; color:#999999}
 
 
 /* TWITTER
@@ -340,8 +352,16 @@ ul.tabs-primary li a:hover{ opacity:0.6}
 .view-tweets ul li{ margin-bottom:10px}
 .view-tweets .views-row a{ text-decoration:none}
 .view-tweets .views-row a:hover{ text-decoration:underline}
+.view-tweets .views-field-text{ font-size:1.15em; }
+.view-tweets em{ font-style:normal}
 .view-tweets .views-field-created-time,
 .view-tweets .views-field-created-time a{ color:#999999; }
+
+
+/* INSTAGRAM
+----------------------------------*/
+div#views_infinite_scroll-ajax-loader{ background:url(../images/ajax-loader.gif) center center no-repeat; height:15px}
+div#views_infinite_scroll-ajax-loader img{ display:none}
 
 
 

@@ -22,7 +22,8 @@
     hide($content['comments']);
     hide($content['links']);
 	hide($content['field_image']);
-    print render($content);
+
+	print render($content);
   ?>
 
   <?php print render($content['links']); ?>

@@ -37,6 +37,8 @@ $(document).ready(function() {
 				$(this).attr('class','close-nav');
 				$('body').addClass('menu-open');
 				$('#filter-toggle span.cover').addClass('fade');
+				$('#nav').height('auto');
+				resizeNav();
 				if($('#page').height() <= $('#nav').height()){
 					$('#page').height($('#nav').height());
 				}
@@ -45,7 +47,7 @@ $(document).ready(function() {
 				$(this).attr('class','open-nav');
 				$('body').removeClass('menu-open');
 				$('#filter-toggle span.cover').removeClass('fade');
-				$('#page').height('');
+				$('#page').height('auto');
 			break;
 		}
 		return false;
@@ -57,8 +59,8 @@ $(document).ready(function() {
 				$(this).attr('class','close-filter');
 				$('body').addClass('filter-open');
 				$('#menu-toggle span').addClass('fade');
-				console.log($('#page').height());
-				console.log($('#filter').height());
+				$('#filter').height('auto');
+				resizeNav();
 				if($('#page').height() <= $('#filter').height()){
 					$('#page').height($('#filter').height());
 				}
@@ -73,6 +75,20 @@ $(document).ready(function() {
 		return false;
 	});
 	
+	// Add floating toggle once scrolled passed toggles
+	$(window).scroll(function(){
+		var top = $(this).scrollTop();
+		if(top > 135){
+			$('body').addClass('floating-toggle');  
+		}else{
+			$('body').removeClass('floating-toggle');  
+		}
+	});
+	$('#floating-filter-toggle').click( function(){
+		$("html, body").animate({ scrollTop: 0 });
+		$('#filter-toggle a').click();
+	})
+	
 	// Resize nav to page height
 	function resizeNav(){
 		if($('#nav').height() < $('#page').height()){
@@ -80,7 +96,7 @@ $(document).ready(function() {
 		}
 		if($('#filter').height() < $('#page').height()){
 			$('#filter').height($('#page').height());
-		}
+		} 
 	}
 	resizeNav();
 	$(window).resize(function() {
@@ -112,8 +128,13 @@ $(document).ready(function() {
 			$('#overlay').width($(window).width()-190);
 		}
 		resizeOverlay();
+		function positionBox(){
+			$('#home').css('margin-top',$(window).height()-180);
+		}
+		positionBox();
 		$(window).resize( function(){
 			resizeOverlay();
+			positionBox();
 		})
 		
 	}
@@ -136,21 +157,19 @@ $(document).ready(function() {
 		winH = $(window).height();
 		winW = $(window).width();
 		// Set height of pager arrows to window height
-		$('#artwork .artwork-pager').height(winH-$('#artwork-info-bar').height());
+		$('#artwork .artwork-pager').height(winH-$('#artwork-info-bar').height()-50);
 		$('#artwork-image').waitForImages( function(){
 			// Set divs to height of page and align info bar to bottom
 			$('#artwork-image, #artwork-image div').height(winH-offsetY);
-			if(winW <= 600 && winW > 400){
+			if(winW <= 600 && winW > 480){
 				$('#artwork-image, #artwork-image div').height(winH-offsetY+80);
 			}
-			if(winW <= 400 && $('body').hasClass('page-node-33')){
-				$('#artwork-image, #artwork-image div').height(winH-offsetY+57);
+			if(winW <= 480 && $('body').hasClass('page-node-33')){
+				$('#artwork-image, #artwork-image div').height(winH-offsetY+47);
 			}
-			if(winW <= 400 && $('body').hasClass('page-images')){
+			if(winW <= 480 && $('body').hasClass('page-images')){
 				$('#artwork-image, #artwork-image div').height(winH-offsetY+84);
 			}
-			// Center image to page
-			$('#artwork-image img').css('margin-top', ($('#artwork-image').height() - $('#artwork-image img').height()) / 2 +'px' );
 			// Set page height to popup height
 			$('#page').height($('#artwork').height()-10);
 		});
@@ -164,9 +183,9 @@ $(document).ready(function() {
 	
 	if($('body').hasClass('node-type-artwork')){
 		// setup artwork resize function
-		artworkResize(225);
+		artworkResize(230);
 		$(window).resize( function(){
-			artworkResize(225);
+			artworkResize(230);
 		})
 	}
 	
@@ -242,7 +261,7 @@ $(document).ready(function() {
 					$('#artwork-image img').fadeIn();
 				});
 				$('#page-content').addClass('fade');
-				artworkResize(150);
+				artworkResize(155);
 				$(document).scrollTop(0);
 				
 				// add click event to read more link
@@ -306,7 +325,7 @@ $(document).ready(function() {
 			var path = obj.attr('href');
 			$('#page-content').addClass('fade');
 			$('body').addClass('loading');
-			$('#loading').css('top',obj.offset().top+9+'px').css('left',obj.offset().left-15+'px');
+			$('#loading').css('top',obj.offset().top+9+'px').css('left',obj.offset().left-13+'px');
 			
 			loadPortfolioInfo(obj);
 			
@@ -363,7 +382,8 @@ $(document).ready(function() {
 					$('#page-content').removeClass('fade');
 					$('body').removeClass('loading');
 					obj.addClass('active');
-					
+					$('#page, #nav, #filter').height('auto');
+					resizeNav();
 					$('#node-content').html(html);
 					$("html, body").animate({ scrollTop: 0 });
 					$('.artwork').on('click', artworkPopup );
@@ -505,6 +525,18 @@ $(document).ready(function() {
 		}
 	});
 	
+	// Fade artwork on project hover
+	$('#projects .filter a').hover( function(){
+		project = $(this).data('project');
+		$('a.artwork').each( function(){
+			if($(this).data('project') != project){
+				$(this).addClass('fade');
+			}
+		});
+	}, function(){
+		$('a.artwork').removeClass('fade');
+	});
+	
 	if($('body').hasClass('page-node-33')){
 		// Check for url hash and load content
 		hashExists = 0;
@@ -515,7 +547,7 @@ $(document).ready(function() {
 		}
 		// setup artwork resize function
 		$(window).resize( function(){
-			artworkResize(150)
+			artworkResize(155)
 		})
 	}
 	
@@ -568,7 +600,7 @@ $(document).ready(function() {
 			$('#artwork-image img').fadeIn();
 		});
 		$('#page-content').addClass('fade');
-		artworkResize(160);
+		artworkResize(165);
 		$(document).scrollTop(0);	
 		// Set pagers rel to nid to setup prev/next links
 		$('#artwork .artwork-pager').attr('rel',obj.data('nid'));
@@ -618,7 +650,7 @@ $(document).ready(function() {
 		
 		// setup artwork resize function
 		$(window).resize( function(){
-			artworkResize(150)
+			artworkResize(155)
 		})
 	}
 

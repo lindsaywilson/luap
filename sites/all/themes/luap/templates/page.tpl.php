@@ -52,12 +52,23 @@
 		</a>
         <span class="cover"></span>
 	</div>
+    <div id="floating-filter-toggle" class="transition"></div>
 	<?php endif; ?>
   </div>
 
   <div id="nav" class="transition menu">
   <div class="inner">
 	<?php print render($page['navigation']); ?>
+    <div id="social">
+    	<div class="title">Let's keep it social</div>
+        <ul>
+            <li><a class="social_twitter" title="Twitter" href="https://twitter.com/luap_nosnibor">Twitter</a></li>
+            <li><a class="social_tumblr" title="Tumblr" href="">Tumblr</a></li>
+            <li><a class="social_pinterest" title="Pinterest" href="">Pinterest</a></li>
+            <li><a class="social_facebook" title="Facebook" href="https://www.facebook.com/luapstudio">Facebook</a></li>
+            <li><a class="social_instagram" title="Instagram" href="http://instagram.com/luapnosnibor">Instagram</a></li>
+        </ul>
+    </div>
   </div>
   </div>
   
@@ -135,7 +146,7 @@
 			</div>	  
 					  
 		<?php endif; ?>
-      	
+        
         <div id="node-content">
 			<?php print render($page['content']); ?>
         </div>
@@ -145,6 +156,16 @@
     </div>
 
   </div>
+  
+  <?php if($is_front):?>
+	<div id="home">
+        <div id="logo-home"><img src="<?php print path_to_theme(); ?>/images/logo_home.png" /></div>
+        <?php
+        $block = module_invoke('views', 'block_view', 'news-home');
+        print render($block);
+	?>
+    </div>
+  <?php endif; ?>
   
   <div id="overlay" class="transition"></div>
 

@@ -4,7 +4,6 @@
  * of these @include files will be combined into a single file.
  */
 
-@import "/sites/all/libraries/lightbox/css/lightbox.css";
 @import "normalize.css";
 @import "fonts.css";
 @import "luap.css";

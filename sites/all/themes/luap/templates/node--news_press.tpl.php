@@ -15,6 +15,10 @@
 
 	<?php print render($content['field_intro']); ?>
     
+	<a href="https://twitter.com/share" class="twitter-share-button" data-lang="en">Tweet</a>
+	<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="https://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+    <div class="fb-like" data-layout="button_count" data-action="like" data-show-faces="false" data-share="false"></div>
+    
     <?php print render($content['body']); ?>
     
     <?php print render($content['field_extra_content']); ?>
@@ -40,7 +44,7 @@
 if($view_mode == 'teaser' && $node->field_news_type['und'][0]['tid'] == 22):
 	
 	global $user;
-	$path = image_style_url('full_width', $content['field_image']['#items'][0]['uri']); 
+	$path = image_style_url('full_width', $node->field_image_2['und'][0]['uri']); 
 	?>
 	
     <div class="full-width" style="background-image:url(<?php print $path; ?>)">

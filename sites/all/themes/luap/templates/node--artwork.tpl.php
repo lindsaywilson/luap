@@ -18,10 +18,10 @@
 	
     <div id="artwork-info-bar" class="info-bar">
     <div class="inner clearfix">
+        <a href="#" id="read-about" class="arrow down">Read about '<?php print $term->name ?>'</a>
         <div id="share">
         	<?php include_once DRUPAL_ROOT . '/' . path_to_theme() . '/templates/include--share.inc'; ?>
         </div>
-        <a href="#" id="read-about" class="arrow down">Read about '<?php print $term->name ?>'</a>
     </div>
     </div>
     
