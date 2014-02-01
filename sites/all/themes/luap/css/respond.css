@@ -151,6 +151,7 @@
 /* ARTWORK */
 #artwork > .inner{ padding-top:10px}
 #artwork-image{ margin-bottom:20px}
+#artwork-info-bar .inner{ padding:0 20px}
 
 .node-type-artwork #main{ margin-top:10px}
 #news-info-bar .inner{ padding-left:30px; margin-left:0}
@@ -193,6 +194,9 @@
 #artwork-info-bar .arrow{ position:relative; top:-45px}
 #artwork-info-bar .arrow:before{ display:none}
 #artwork-info-bar #share{ margin-top:-20px}
+
+.page-images #artwork .artwork-pager{ top:70px}
+.page-images .info-bar .inner{ padding-left:35px; padding-right:35px}
 
 
 }

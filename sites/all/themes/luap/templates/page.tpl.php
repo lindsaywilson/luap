@@ -62,11 +62,10 @@
     <div id="social">
     	<div class="title">Let's keep it social</div>
         <ul>
-            <li><a class="social_twitter" title="Twitter" href="https://twitter.com/luap_nosnibor">Twitter</a></li>
-            <li><a class="social_tumblr" title="Tumblr" href="">Tumblr</a></li>
-            <li><a class="social_pinterest" title="Pinterest" href="">Pinterest</a></li>
-            <li><a class="social_facebook" title="Facebook" href="https://www.facebook.com/luapstudio">Facebook</a></li>
-            <li><a class="social_instagram" title="Instagram" href="http://instagram.com/luapnosnibor">Instagram</a></li>
+            <li><a class="social_twitter" title="Twitter" href="https://twitter.com/luap_nosnibor" rel="external">Twitter</a></li>
+            <li><a class="social_tumblr" title="Tumblr" href="http://luapnosnibor.tumblr.com/" rel="external">Tumblr</a></li>
+            <li><a class="social_facebook" title="Facebook" href="https://www.facebook.com/luapstudio" rel="external">Facebook</a></li>
+            <li><a class="social_instagram" title="Instagram" href="http://instagram.com/luapnosnibor" rel="external">Instagram</a></li>
         </ul>
     </div>
   </div>
