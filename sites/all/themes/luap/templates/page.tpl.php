@@ -6,7 +6,7 @@
  * Complete documentation for this file is available online.
  * @see https://drupal.org/node/1728148
  */
- 
+
  // node IDs to display filter div on
  $filterIDS = array(31, 32, 33);
 ?>
@@ -166,7 +166,14 @@
 
   </div>
   
-  <div id="overlay" class="transition"></div>
+  <div id="overlay" class="transition">
+  	<?php
+    	if($is_front){
+			$block = module_invoke('views', 'block_view', 'home_slideshow-block');
+            print render($block);
+		}
+	?>
+  </div>
 
   <?php print render($page['footer']); ?>
   

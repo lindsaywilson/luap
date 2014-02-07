@@ -4,7 +4,6 @@
 global $base_url;
 global $base_root;
 $url = $base_root.urlencode($node_url);
-dpm($url);
 
 $media = file_create_url($node->field_image['und'][0]['uri']);
 

@@ -20,6 +20,7 @@ body{ color:#000; font-family:'VolkswagenMed'; font-size:62.5%; -webkit-font-smo
 .sidebar-first h1#page-title{ float:left; width:52%}
 .sidebar-first #sidebar{ float:right; width:48%}
 .sidebar-first #sidebar > .inner{ padding-left:50px}
+.view-page-image{ max-width:450px; margin:0 auto}
 
 
 /* ------------------------------ */
@@ -60,7 +61,7 @@ body{ color:#000; font-family:'VolkswagenMed'; font-size:62.5%; -webkit-font-smo
 .toggle span.cover{ position:absolute; z-index:0; top:0; left:0; background:#fff; width:100%; height:100%; opacity:0}
 .toggle span.fade{ opacity:.6; z-index:2}
 
-#menu-toggle{ top:-55px}
+#menu-toggle{ top:-49px}
 #menu-toggle a:after{ width:31px; height:30px; top:-2px }
 #menu-toggle a.close-nav:after{ background-position:-31px 0}
 #filter-toggle a:after{ background-position:0 -40px; width:33px; height:27px; }
@@ -68,6 +69,7 @@ body{ color:#000; font-family:'VolkswagenMed'; font-size:62.5%; -webkit-font-smo
 #floating-filter-toggle{ position:fixed; right:85px; top:0; opacity:0; background:#fff url(../images/sprite.png) 11px -28px; width:50px; height:50px; border-radius:50px; border:1px solid #000; cursor:pointer }
 .floating-toggle #toggles{ z-index:2}
 .floating-toggle #floating-filter-toggle{ top:15px; opacity:1}
+.menu-open #floating-filter-toggle,
 .filter-open #floating-filter-toggle{ display:none}
 
 #project-info{ text-align:center; max-width:620px; margin:0 auto; opacity:0}
@@ -114,6 +116,7 @@ body{ color:#000; font-family:'VolkswagenMed'; font-size:62.5%; -webkit-font-smo
 
 #filter{ padding-top:25px; }
 #filter ul, #filter ul li{ margin:0; padding:0; list-style:none;}
+#filter ul{ font-family:'VolkswagenReg'}
 #filter p, #filter ul{ font-size:1.5em;  }
 #filter p.filter-title{ padding-left:30px; font-weight:bold; position:relative}
 #filter p.filter-title:before{ content:''; position:absolute; left:2px; top:4px; width:21px; height:12px; background:url(../images/arrow_nav.png) 0 0 no-repeat}
@@ -155,17 +158,6 @@ a:hover{ text-decoration:none}
 img.lb-image{ max-width:none}
 img{ vertical-align:middle}
 
-.arrow{ font-family:'VolkswagenReg'; font-size:1.5em; position:relative; display:inline}
-.arrow:before{ content:''; display:block; position:absolute; left:-30px; top:1px; background:url(../images/sprite.png) -50px -80px; width:30px; height:12px}
-.arrow.down:before{ background-position:-30px -80px; width:12px; height:21px; left:-25px; top:-4px}
-.arrow.right:before{ left:auto; right:-40px}
-.arrow.after:before{ left:auto; right:-36px; top:3px }
-.arrow.after{ margin-right:40px}
-a.arrow{ text-decoration:none}
-a.arrow:hover{ text-decoration:underline}
-h2 .arrow{ font-size:1em}
-h2 .arrow:before{ top:5px}
-
 
 /* DRUPAL OVERRIDES
 ----------------------------------*/
@@ -189,15 +181,28 @@ ul.tabs-primary li a:hover{ opacity:0.6}
 #skip-link a,
 #skip-link a:visited {display: block; width: 100%; padding: 2px 0 3px 0; text-align: center; background-color: #666; color: #fff;}
 
+ .flexslider{ background:none; border:0; box-shadow:none}
+
 .specs{ font-family:'Dado'; font-size:1.2em}
 .info-box{ background:#fff; padding:40px}
 
-.info-bar{ line-height:1; position:relative; margin:0 -70px;}
-.info-bar .inner{ padding:10px 70px 7px;}
+.arrow{ font-family:'VolkswagenReg'; font-size:1.5em; position:relative; display:inline}
+.arrow:before{ content:''; display:block; position:absolute; left:-30px; top:12px; background:url(../images/sprite.png) -50px -80px; width:30px; height:12px}
+.arrow.down:before{ background-position:-30px -80px; width:12px; height:21px; left:-25px; top:6px}
+.arrow.right:before{ left:auto; right:-40px}
+.arrow.after:before{ left:auto; right:-36px; top:3px }
+.arrow.after{ margin-right:40px}
+a.arrow{ text-decoration:none}
+a.arrow:hover{ text-decoration:underline}
+h2 .arrow{ font-size:1em}
+h2 .arrow:before{ top:5px}
+.info-bar .arrow{ float:left; display:inline-block; }
+
+.info-bar{ line-height:35px; position:relative; margin:0 -70px;}
+.info-bar .inner{ padding:0 70px;}
 .info-bar:before,
 .info-bar:after{ content:''; display:block; background:url(../images/line.png); width:100%; height:3px; z-index:999}
 .info-bar:before{ position:absolute; top:-3px}
-.info-bar .arrow{ float:left; display:inline-block}
 
 .thumb{ width:20%; text-align:center; position:relative; float:left; }
 .thumb .inner{ padding:0 10px 20px; position:relative}
@@ -209,14 +214,17 @@ ul.tabs-primary li a:hover{ opacity:0.6}
 /* SHARE
 ----------------------------------*/
 #share{ font-family:'Dado'; font-size:1.2em}
-#share .title{ display:inline-block; position:relative; top:5px}
-#share a{ display:inline-block; text-indent:-999em; height:22px; background:url(../images/sprite.png); cursor:pointer; opacity:0.8; position:relative; top:-3px}
+#share .title{ display:inline-block; position:relative; top:2px}
+#share a{ display:inline-block; text-indent:-999em; height:22px; background:url(../images/sprite.png); cursor:pointer; opacity:0.8; position:relative; top:4px}
 #share a:hover{ opacity:1}
 #share a.pinterest{ width:22px; background-position:0 -105px}
 #share a.twitter{ width:26px; background-position:-22px -105px}
 #share a.google{ width:23px; background-position:-48px -105px}
 #share a.facebook{ width:18px; background-position:-71px -105px}
-.info-bar #share{ float:right; position:relative; top:-2px}
+.info-bar #share{ float:right;}
+
+#twitter, #facebook, #facebook .fb_iframe_widget{float:left; display:inline !important}
+#facebook span{ display:block; }
 
 
 /* RESPONSIVE VIDEO
@@ -232,8 +240,11 @@ ul.tabs-primary li a:hover{ opacity:0.6}
 /* FRONT 
 ----------------------------------*/
 .front #main{ margin:0}
-.front #overlay{ opacity:1; }
-.front #overlay .backstretch img{ left:auto !important; right:0 !important}
+.front #overlay{ opacity:1; background:#000 }
+.front #overlay div,
+.front ul.slides,
+.front ul.slides li{ width:100; height:100%; margin:0; padding:0}
+.front .flexslider li{ background-position:center center; background-size:cover}
 .front #header,
 .front #sidebar,
 .front #page-content{ display:none}
@@ -251,7 +262,7 @@ ul.tabs-primary li a:hover{ opacity:0.6}
 ----------------------------------*/
 .field-name-field-intro p{ font-size:2em; margin:0; line-height:1.25}
 .field-name-field-intro,
-.node-news-press > .field-name-body,
+.node-news-press .field-name-body,
 .line{ background:url(../images/line.png) left bottom no-repeat; padding-bottom:50px; margin-bottom:45px}
 
 .view-page-image .views-row{ text-align:center}
@@ -281,17 +292,16 @@ ul.tabs-primary li a:hover{ opacity:0.6}
 #artwork #artwork-prev:hover{ left:28px}
 #artwork #artwork-next:hover{ right:28px}
 #artwork .info-bar{ margin:0 -30px}
-.artwork.fade{ opacity:0.5}
+.artwork{ opacity:0}
 
 #artwork-image{ text-align:center; max-width:1000px; margin:0 auto 60px; position:relative;}
 #artwork-image img{ max-height:100%; position:absolute; margin:auto; top:0; right:0; bottom:0; left:0}
 .node-artwork h2{ margin-bottom:15px}
 #artwork-details,
 #artwork-project-details{ text-align:center; max-width:560px; margin:0 auto 50px; }
-#artwork-project-bar:after{ display:none}
 
 /* IMAGES POPUP */
-.page-images #artwork-info-bar{ text-align:center; position:fixed; left:0; bottom:0; margin:0; width:100%; background:#fff; padding-bottom:12px}
+.page-images #artwork-info-bar{ text-align:center; position:fixed; left:0; bottom:0; margin:0; width:100%; background:#fff; }
 .page-images #artwork-info-bar:after{ display:none}
 .page-images .info-bar .arrow{ float:none}
 
@@ -313,8 +323,8 @@ ul.tabs-primary li a:hover{ opacity:0.6}
 #tags ul, #tags li{margin:0; padding:0; list-style:none; display:inline}
 #tags a{ background:#000; color:#fff; display:inline-block; text-decoration:none; padding:3px 7px}
 #tags a:hover{ opacity:0.9}
-#news-info-bar{ position:fixed; bottom:-10px; left:0; width:100%; margin:0; background:#fff; z-index:1}
-#news-info-bar .inner{ padding:12px 0 10px}
+#news-info-bar{ position:fixed; bottom:-3px; left:0; width:100%; margin:0; background:#fff; z-index:1}
+#news-info-bar .inner{ padding:0}
 
 
 /* ------------------------------ */
@@ -347,6 +357,7 @@ ul.tabs-primary li a:hover{ opacity:0.6}
 /* PRESS COVERAGE
 ----------------------------------*/
 .view-news.view-display-id-press a.press-item{ display:block; height:100%; background:#e4e4e4 center center / 75% auto no-repeat; text-indent:-999em; }
+.view-news.view-display-id-press a.press-item:hover{ border-radius:999em}
 
 
 /* EXHIBITIONS
@@ -355,6 +366,7 @@ ul.tabs-primary li a:hover{ opacity:0.6}
 .view-exhibitions .views-field{ float:left}
 .view-exhibitions .views-field-title{ font-size:1.5em; line-height:1.2; width:10%}
 .view-exhibitions .views-field-body{ width:90%}
+.view-exhibitions h2:first-child{ margin-top:0}
 .view-exhibitions h3{ margin:0; font-size:1.5em}
 .view-exhibitions p{ font-size:1.3em; color:#999999}
 

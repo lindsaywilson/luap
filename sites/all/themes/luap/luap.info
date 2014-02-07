@@ -18,12 +18,16 @@ base theme  = zen
 stylesheets[all][] = system.menus.css
 stylesheets[all][] = system.messages.css
 stylesheets[all][] = system.theme.css
+stylesheets[all][] = ../../libraries/flexslider/flexslider.css
 stylesheets[all][] = css/styles.css
 
 
+scripts[] = js/jquery.easing.1.3.js
 scripts[] = js/mobile-scroll.js
 scripts[] = js/jquery.fitvids.js
 scripts[] = js/jquery.waitforimages.js
+scripts[] = js/retina-1.1.0.min.js
+scripts[] = ../../libraries/flexslider/jquery.flexslider-min.js
 scripts[] = js/script.js
 
 regions[content_above]	= Content: Above
