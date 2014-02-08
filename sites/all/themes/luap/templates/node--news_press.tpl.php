@@ -15,7 +15,7 @@
 
 	<?php print render($content['field_intro']); ?>
     
-    <div id="share-like">
+    <div id="share-like" class="clearfix">
         <div id="twitter">
             <a href="https://twitter.com/share" class="twitter-share-button" data-lang="en">Tweet</a>
             <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="https://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
@@ -59,7 +59,7 @@
 if($view_mode == 'teaser' && $node->field_news_type['und'][0]['tid'] == 22):
 	
 	global $user;
-	$path = image_style_url('full_width', $node->field_image_2['und'][0]['uri']); 
+	$path = file_create_url($node->field_image_2['und'][0]['uri']); 
 	?>
 	
     <div class="full-width" style="background-image:url(<?php print $path; ?>)">

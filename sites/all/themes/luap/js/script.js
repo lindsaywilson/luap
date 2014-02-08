@@ -83,20 +83,7 @@ $(document).ready(function() {
 		}
 		return false;
 	});
-	
-	// Add floating toggle once scrolled passed toggles
-	$(window).scroll(function(){
-		var top = $(this).scrollTop();
-		if(top > 135){
-			$('body').addClass('floating-toggle');  
-		}else{
-			$('body').removeClass('floating-toggle');  
-		}
-	});
-	$('#floating-filter-toggle').click( function(){
-		$("html, body").animate({ scrollTop: 0 }, {duration: 1200, easing: 'easeOutQuad'});
-		$('#filter-toggle a').click();
-	})
+
 	
 	// Resize nav to page height
 	function resizeNav(){
@@ -129,6 +116,34 @@ $(document).ready(function() {
 		})
 	}
 	
+	// LAZY LOAD IMAGES
+	//---------------------------
+	function loadImages(selector){
+	 
+		$(selector).lazy({
+			bind: 'event',
+			delay: 0,
+			effect: 'fadeIn',
+			effectTime: 1500,
+			enableThrottle: true,
+			throttle: 250,
+			afterLoad: function(element) {
+				$(element).removeClass('lazy');
+			},
+			beforeLoad: function(element) {
+				// Lazy will call this function, before the image gets loaded
+				//console.log('Loading' + element.attr('data-src'));
+			},
+			onLoad: function(element) {
+				// while loading the image, especially on big images, this function will be called
+			},
+			onError: function(element) {
+				// if the image could not get loaded successfully, this is the triggered function
+				//console.log("error loading image: " + element.attr("data-src"));
+			}
+		});
+	}
+	
 	
 	// FRONT
 	//---------------------------
@@ -137,12 +152,14 @@ $(document).ready(function() {
 		winW = $(window).width();
 		winH = $(window).height();
 		if(winW < 740){
-			if($('.view-news').length > 0){
-				marg = $(window).height() - $('#logo-home').height() - $('.info-box h2').height() - 90;
-				$('#home').css('top',marg).css('margin-bottom',marg);
-			} else{
-				$('#home').css('top',$(window).height() - $('#logo-home').height() - 40);
-			}	
+			$('#logo-home').waitForImages( function(){
+				if($('.view-news').length > 0){
+					marg = $(window).height() - $('#logo-home').height() - $('.info-box h2').height() - 90;
+					$('#home').css('top',marg).css('margin-bottom',marg);
+				} else{
+					$('#home').css('top',$(window).height() - $('#logo-home').height() - 40);
+				}	
+			});
 		}
 		if($('#nav').height() < winH){
 			$('#nav').css('height',winH+'px !important');
@@ -256,14 +273,14 @@ $(document).ready(function() {
 	});
 	
 	// .artwork load fadein function
-	$('.artwork').each( function(){
+	/*$('.artwork').each( function(){
 		var img = $(this);
 		img.waitForImages( function(){
 			img.fadeIn(1500, function(){
 				img.css('opacity','1');
 			});
 		})
-	});
+	});*/
 	
 	// .artwork click function
 	function artworkPopup() {
@@ -420,14 +437,22 @@ $(document).ready(function() {
 					resizeNav();
 					$('#node-content').html(html);
 					$("html, body").animate({ scrollTop: 0 });
-					$('.artwork').each( function(){
+					
+					/*$('.artwork').each( function(){
 						var img = $(this);
 						img.waitForImages( function(){
 							img.fadeIn(1500, function(){
 								img.css('opacity','1');
 							});
 						})
-					});
+					});*/
+					
+					/*$("img.lazy").lazy({ 
+						effect: "fadeIn", 
+						effectTime: 2000 
+					});*/
+					loadImages('img.lazy');
+					
 					$('.artwork').on('click', artworkPopup );
 					
 					// If hash exists and there is a second element, click to filter the results
@@ -568,6 +593,24 @@ $(document).ready(function() {
 	});
 	
 	if($('body').hasClass('page-node-33')){
+		
+		// Lazy load images
+		loadImages('img.lazy');
+		
+		// Add floating toggle once scrolled passed toggles
+		$(window).scroll(function(){
+			var top = $(this).scrollTop();
+			if(top > 135){
+				$('body').addClass('floating-toggle');  
+			}else{
+				$('body').removeClass('floating-toggle');  
+			}
+		});
+		$('#floating-filter-toggle').click( function(){
+			$("html, body").animate({ scrollTop: 0 }, {duration: 1200, easing: 'easeOutQuad'});
+			$('#filter-toggle a').click();
+		})
+		
 		// Check for url hash and load content
 		hashExists = 0;
 		if(window.location.hash && window.location.hash != ''){

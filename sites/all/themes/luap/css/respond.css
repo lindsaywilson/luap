@@ -211,8 +211,9 @@ only screen and (     -o-min-device-pixel-ratio: 2/1),
 only screen and (        min-device-pixel-ratio: 2),
 only screen and (                min-resolution: 192dpi),
 only screen and (                min-resolution: 2dppx) { 
-  
-#logo{ background:url(../images/logo@2x.png); background-size:92px 27px; }
+
+#logo img{ display:none}
+#logo{ background:url(../images/logo@2x.png); background-size:92px 27px; display:inline-block; width:92px; height:27px }
 
 #nav ul.menu li:before,
 #filter p.filter-title:before{ background-image:url(../images/arrow_nav@2x.png); background-size:21px 12px}
@@ -234,8 +235,11 @@ only screen and (                min-resolution: 2dppx) {
 .node-news-press .field-name-body,
 #header,
 .info-bar:before,
-.info-bar:after{ background-image:url(../images/line@2x.png); background-size:auto 2px; background-repeat:repeat-x}
+.info-bar:after,
+.field-collection-container .field-items .field-item:last-child .field-collection-view{ 
+background-image:url(../images/line@2x.png); background-size:auto 2px; background-repeat:repeat-x}
 .info-bar:before{ top:-1px}
-#nav:before, #filter:before{ background-image:url(../images/line_vert@2x.png); background-size:5px auto}
+.node-news-press .field-name-body{ background:url(../images/line@2x.png) left top no-repeat, url(../images/line@2x.png) left bottom no-repeat;}
+#nav:before, #filter:before{ background-image:url(../images/line_vert@2x.png); background-size:5px auto; }
 
 }

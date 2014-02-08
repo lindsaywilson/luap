@@ -52,9 +52,11 @@
 		</a>
         <span class="cover"></span>
 	</div>
-    <div id="floating-filter-toggle" class="transition"></div>
 	<?php endif; ?>
   </div>
+  <?php if(isset($node) && in_array($node->nid, $filterIDS)):?>
+  <div id="floating-filter-toggle" class="transition"></div>
+  <?php endif; ?>
 
   <div id="nav" class="transition menu">
   <div class="inner">

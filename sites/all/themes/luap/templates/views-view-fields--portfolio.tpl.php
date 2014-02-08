@@ -37,7 +37,7 @@ foreach ($fields as $id => $field):
 		case 'field-image':
 			$medium = strtolower(str_replace(' ','-',$fields['field_medium']->content));
 			$project = strtolower(str_replace(' ','-',$fields['field_project']->content));
-			print '<a id="artwork-'.$fields['nid']->content.'" class="transition artwork" href="'.$fields['path']->content.'" data-medium="'.$medium.'" data-project="'.$project.'" data-nid="'.$fields['nid']->content.'"><img src="'.$field->content.'" /></a>';
+			print '<a id="artwork-'.$fields['nid']->content.'" class="transition artwork" href="'.$fields['path']->content.'" data-medium="'.$medium.'" data-project="'.$project.'" data-nid="'.$fields['nid']->content.'"><img class="lazy" data-src="'.$field->content.'" src="/'.path_to_theme().'/images/pixel.gif" /></a>';
 		break;
 		
 		default:
