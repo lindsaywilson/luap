@@ -50,9 +50,6 @@ function luap_preprocess_html(&$variables, $hook) {
       if ($arg[1] == '31' || $arg[1] == '32') {
       	$variables['classes_array'][] = 'page-images';
       }
-	  if ($arg[1] == '33') {
-      	drupal_add_js('/'.path_to_theme().'/js/jquery.lazy.min.js');
-      }
     }
 }
 // */

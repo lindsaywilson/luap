@@ -128,7 +128,7 @@
 				$medium = taxonomy_term_load($node->field_artwork_reference['und'][0]['node']->field_medium['und'][0]['tid']);
 				?>
             <div id="artwork-reference">
-            	<h2><a class="arrow right" href="/<?php print drupal_get_path_alias('node/'.$node->field_artwork_reference['und'][0]['nid']); ?>"><?php print $node->field_artwork_reference['und'][0]['node']->title; ?></a></h2>
+            	<h2><a class="arrow right" href="/<?php print drupal_get_path_alias('node/'.$node->field_artwork_reference['und'][0]['nid']); ?>"><?php print $node->field_artwork_reference['und'][0]['node']->title; ?><span></span></a></h2>
                 <p class="specs"><?php print $project->name.', 
 				'.date('Y', strtotime($node->field_artwork_reference['und'][0]['node']->field_date['und'][0]['value'])).', 
 				'.$node->field_artwork_reference['und'][0]['node']->field_materials['und'][0]['value'].', 
@@ -148,7 +148,7 @@
 					
 			<div id="project-info" class="transition">
 				<div id="project-info-toggle" class="toggle transition">
-					<a class="open" href="#"><span class="read-about">Read about</span> '<span class="project-title"></span>'</a>
+					<a class="open" href="#"><span class="read-about">Read about</span> <span class="mobile-title">project</span> <span class="project-title">'<span></span>'</span></a>
 				</div>
 				<div id="project-info-description" >
                 	<h2></h2>

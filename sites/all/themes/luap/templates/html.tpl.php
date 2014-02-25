@@ -22,7 +22,9 @@
     <meta name="HandheldFriendly" content="true">
     <meta name="viewport" content="width=device-width; initial-scale=1; maximum-scale=1; user-scalable=0;" />
   <?php endif; ?>
-  <meta http-equiv="cleartype" content="on">
+  <meta http-equiv="cleartype" content="on"> 
+  <meta property="fb:admins" content="612220806, 513884194" />
+  <meta property="fb:app_id" content="511652485599977" /> 
 
   <?php print $styles; ?>
   <?php print $scripts; ?>

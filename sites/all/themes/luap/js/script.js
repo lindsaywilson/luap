@@ -2,13 +2,22 @@
  * @file
  * A JavaScript file for the theme.
  */
-/*
+
 (function ($, Drupal, window, document, undefined) {
 
 
 // To understand behaviors, see https://drupal.org/node/756722#behaviors
-Drupal.behaviors.my_custom_behavior = {
-  attach: function(context, settings) { */
+Drupal.behaviors.lazy = {
+  attach: function(context, settings) { 
+  	
+	// Lazy load images
+	loadImages('img.lazy');
+  
+  }
+};
+
+
+})(jQuery, Drupal, this, this.document); 
 
 jQuery.noConflict();
 (function( $ ) {
@@ -115,34 +124,11 @@ $(document).ready(function() {
 			squareBox();
 		})
 	}
+
 	
 	// LAZY LOAD IMAGES
 	//---------------------------
-	function loadImages(selector){
-	 
-		$(selector).lazy({
-			bind: 'event',
-			delay: 0,
-			effect: 'fadeIn',
-			effectTime: 1500,
-			enableThrottle: true,
-			throttle: 250,
-			afterLoad: function(element) {
-				$(element).removeClass('lazy');
-			},
-			beforeLoad: function(element) {
-				// Lazy will call this function, before the image gets loaded
-				//console.log('Loading' + element.attr('data-src'));
-			},
-			onLoad: function(element) {
-				// while loading the image, especially on big images, this function will be called
-			},
-			onError: function(element) {
-				// if the image could not get loaded successfully, this is the triggered function
-				//console.log("error loading image: " + element.attr("data-src"));
-			}
-		});
-	}
+	loadImages('img.lazy');
 	
 	
 	// FRONT
@@ -195,21 +181,18 @@ $(document).ready(function() {
 		winH = $(window).height();
 		winW = $(window).width();
 		// Set height of pager arrows to window height
-		$('#artwork .artwork-pager').height(winH-$('#artwork-info-bar').height()-50);
+		$('#artwork .artwork-pager').height(winH-$('#artwork-info-bar').height()-57);
 		$('#artwork-image').waitForImages( function(){
 			// Set divs to height of page and align info bar to bottom
 			$('#artwork-image, #artwork-image div').height(winH-offsetY);
-			if(winW <= 600 && winW > 480){
-				$('#artwork-image, #artwork-image div').height(winH-offsetY+88);
+			if(winW <= 600 && $('body').hasClass('page-node-33')){
+				$('#artwork-image, #artwork-image div').height(winH-offsetY+59);
 			}
-			if(winW <= 480 && $('body').hasClass('page-node-33')){
-				$('#artwork-image, #artwork-image div').height(winH-offsetY+47);
+			if(winW <= 600 && $('body').hasClass('node-type-artwork')){
+				$('#artwork-image, #artwork-image div').height(winH-offsetY+70);
 			}
-			if(winW <= 480 && $('body').hasClass('node-type-artwork')){
-				$('#artwork-image, #artwork-image div').height(winH-offsetY+57);
-			}
-			if(winW <= 480 && $('body').hasClass('page-images')){
-				$('#artwork-image, #artwork-image div').height(winH-offsetY+47);
+			if(winW <= 600 && $('body').hasClass('page-images')){
+				$('#artwork-image, #artwork-image div').height(winH-offsetY+63);
 			}
 			// Set page height to popup height
 			$('#page').height($('#artwork').height()-10);
@@ -224,9 +207,9 @@ $(document).ready(function() {
 	
 	if($('body').hasClass('node-type-artwork')){
 		// setup artwork resize function
-		artworkResize(230);
+		artworkResize(225);
 		$(window).resize( function(){
-			artworkResize(230);
+			artworkResize(225);
 		})
 	}
 	
@@ -271,16 +254,6 @@ $(document).ready(function() {
 		}
 		return false;
 	});
-	
-	// .artwork load fadein function
-	/*$('.artwork').each( function(){
-		var img = $(this);
-		img.waitForImages( function(){
-			img.fadeIn(1500, function(){
-				img.css('opacity','1');
-			});
-		})
-	});*/
 	
 	// .artwork click function
 	function artworkPopup() {
@@ -438,19 +411,6 @@ $(document).ready(function() {
 					$('#node-content').html(html);
 					$("html, body").animate({ scrollTop: 0 });
 					
-					/*$('.artwork').each( function(){
-						var img = $(this);
-						img.waitForImages( function(){
-							img.fadeIn(1500, function(){
-								img.css('opacity','1');
-							});
-						})
-					});*/
-					
-					/*$("img.lazy").lazy({ 
-						effect: "fadeIn", 
-						effectTime: 2000 
-					});*/
 					loadImages('img.lazy');
 					
 					$('.artwork').on('click', artworkPopup );
@@ -529,7 +489,7 @@ $(document).ready(function() {
 			success: function(html) {
 				$('body').addClass('project-info');
 				$('#project-info h2').html(projectName);
-				$('#project-info .project-title').html(projectName);
+				$('#project-info .project-title span').html(projectName);
 				$('#project-info-description .load').html($(html).find('.taxonomy-term-description'));
 			}
 		})
@@ -592,10 +552,26 @@ $(document).ready(function() {
 		}
 	});
 	
+	
+	// Portfolio page
 	if($('body').hasClass('page-node-33')){
-		
-		// Lazy load images
-		loadImages('img.lazy');
+
+		// Check for url hash and load content
+		hashExists = 0;
+		if(window.location.hash && window.location.hash != ''){
+			hashExists = 1;
+			hash = window.location.hash.substring(1).split('/');
+			$('.filter a.'+hash[1]).click();
+		}
+		// setup artwork resize function
+		$(window).resize( function(){
+			artworkResize(155)
+		})
+	}
+	
+	
+	// Portfolio and Images pages
+	if($('body').hasClass('page-images') || $('body').hasClass('page-node-33')){
 		
 		// Add floating toggle once scrolled passed toggles
 		$(window).scroll(function(){
@@ -609,18 +585,6 @@ $(document).ready(function() {
 		$('#floating-filter-toggle').click( function(){
 			$("html, body").animate({ scrollTop: 0 }, {duration: 1200, easing: 'easeOutQuad'});
 			$('#filter-toggle a').click();
-		})
-		
-		// Check for url hash and load content
-		hashExists = 0;
-		if(window.location.hash && window.location.hash != ''){
-			hashExists = 1;
-			hash = window.location.hash.substring(1).split('/');
-			$('.filter a.'+hash[1]).click();
-		}
-		// setup artwork resize function
-		$(window).resize( function(){
-			artworkResize(155)
 		})
 	}
 	
@@ -673,7 +637,7 @@ $(document).ready(function() {
 			$('#artwork-image img').fadeIn();
 		});
 		$('#page-content').addClass('fade');
-		artworkResize(165);
+		artworkResize(155);
 		$(document).scrollTop(0);	
 		// Set pagers rel to nid to setup prev/next links
 		$('#artwork .artwork-pager').attr('rel',obj.data('nid'));
@@ -704,6 +668,11 @@ $(document).ready(function() {
 				obj.addClass('active');
 				
 				$('#node-content').html(html);
+				$('#page').height('auto');
+				$('#nav, #filter').height($('#page').height());
+				// Lazy load images
+				loadImages('img.lazy');
+				// Set hash
 				hash = path.split("/"); 
 				window.location.hash = '#/'+hash[1];
 				$('.image').on('click', imagesPopup );
@@ -716,6 +685,7 @@ $(document).ready(function() {
 	
 	// Check for url hash and load content
 	if($('body').hasClass('page-images')){
+
 		if(window.location.hash && window.location.hash != ''){
 			hash = window.location.hash.substring(2);
 			$('a.'+hash).click();
@@ -733,9 +703,32 @@ $(document).ready(function() {
 });
 })(jQuery);
 	
-/*
-  }
-};
 
 
-})(jQuery, Drupal, this, this.document); */
+// LAZY LOAD IMAGES
+//---------------------------
+	function loadImages(selector){
+	 
+		jQuery(selector).lazy({
+			bind: 'event',
+			delay: 0,
+			effect: 'fadeIn',
+			effectTime: 1500,
+			enableThrottle: true,
+			throttle: 250,
+			afterLoad: function(element) {
+				jQuery(element).removeClass('lazy');
+			},
+			beforeLoad: function(element) {
+				// Lazy will call this function, before the image gets loaded
+				//console.log('Loading' + element.attr('data-src'));
+			},
+			onLoad: function(element) {
+				// while loading the image, especially on big images, this function will be called
+			},
+			onError: function(element) {
+				// if the image could not get loaded successfully, this is the triggered function
+				//console.log("error loading image: " + element.attr("data-src"));
+			}
+		});
+	}

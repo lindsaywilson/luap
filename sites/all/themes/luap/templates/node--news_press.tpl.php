@@ -29,7 +29,7 @@
     
     <?php print render($content['field_extra_content']); ?>
     
-    <div id="tags">
+    <div id="tags" class="clearfix">
     	<div class="arrow after">More</div>
         <ul>
 		<?php foreach($node->field_tags['und'] as &$tid): ?>
@@ -39,7 +39,7 @@
     </div>
     
     <div id="news-info-bar" class="info-bar">
-    <div class="inner width clearfix">
+    <div class="inner clearfix">
     	<?php 
 		$artwork = node_load($content['field_artwork_reference']['#items'][0]['nid']);
 		$project = taxonomy_term_load($artwork->field_project['und'][0]['tid']);
@@ -47,7 +47,7 @@
         <div id="share">
         	<?php include_once DRUPAL_ROOT . '/' . path_to_theme() . '/templates/include--share.inc'; ?>
         </div>
-        <a class="arrow" href="/portfolio/#/<?php print strtolower(str_replace(' ','-',$project->name)) ?>">View '<?php print $project->name ?>' project</a>
+        <a class="arrow" href="/portfolio/#/<?php print strtolower(str_replace(' ','-',$project->name)) ?>">View <span class="project-title">'<?php print $project->name ?>'</span> project</a>
     </div>
     </div>
 

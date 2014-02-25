@@ -23,28 +23,33 @@
  *
  * @ingroup views_templates
  */
+ //dpm($fields);
+ 
+ //preg_match( '/src="([^"]*)"/i', $foo, $array ) ;
+ 
 ?>
-<?php foreach ($fields as $id => $field): 
+<?php foreach ($fields as $id => $field): ?>
 
+<?php
+	
 	switch($field->class){
 		
-		case 'field-images-1':
-		case 'field-images-2':
-		case 'title':
-		case 'delta':
+		case 'link':
+		case 'caption':
+		case 'likes':
 		break;
 		
-		case 'field-images':
-			$title = str_replace(' ','-', $fields['title']->content);
-			$title .= '-'.$fields['delta']->content;
-			print '<a class="image" id="'.$title.'" data-nid="'.$title.'" href="'.$fields['field_images_2']->content.'" title="'.$fields['field_images_1']->content.'"><img class="lazy" data-src="'.$field->content.'" src="/'.path_to_theme().'/images/pixel.gif" /></a>';
+		case 'images':
+			preg_match( '/src="([^"]*)"/i', $field->content, $src);
+			print '<a href="'.$fields['link']->content.'" target="_blank" title="'.$fields['caption']->content.'"><img class="lazy" data-src="'.$src[1].'" src="/'.path_to_theme().'/images/pixel.gif" /><div class="transition likes">Likes <span>'.$fields['likes']->content.'</span></div></a>';
 		break;
 		
 		default:
 			print $field->content;
 		break;
-	
+		
 	}
+	
+?>
 
-
-endforeach; ?>
+<?php endforeach; ?>

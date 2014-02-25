@@ -18,7 +18,7 @@
 	
     <div id="artwork-info-bar" class="info-bar">
     <div class="inner clearfix">
-        <a href="#" id="read-about" class="arrow down">Read about '<?php print $term->name ?>'</a>
+        <a href="#" id="read-about" class="arrow down">Read <span class="mobile">more</span> <span class="project-title">about '<?php print $term->name ?>'</span></a>
         <div id="share">
         	<?php include_once DRUPAL_ROOT . '/' . path_to_theme() . '/templates/include--share.inc'; ?>
         </div>
