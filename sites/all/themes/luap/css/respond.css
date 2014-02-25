@@ -5,7 +5,7 @@
 
 @media (min-width: 1601px) {
 
-#main, #header, #toggles{ transform:translate3d(0,0,0); max-width:83%; margin-left:2%; margin-right:2%}
+#main, #header, #toggles, #news-info-bar{ max-width:83%; margin-left:2%; margin-right:2%}
 #menu-toggle{ display:none}
 #nav, #filter{ right:-13%; width:13%}
 #nav{ right:0; }
@@ -17,6 +17,10 @@
 .filter-open #page-content{ transform:translate3d(0,0,0); -o-transform: translate3d(0,0,0); -ms-transform: translate3d(0,0,0); -moz-transform: translate3d(0,0,0); -webkit-transform: translate3d(0,0,0); margin-right:0 }
 
 .thumb{ width:16.66%}
+
+#news-info-bar{ max-width:83%; padding:0 0 0 2%; margin:0 }
+#news-info-bar .inner{ padding:0}
+#news-info-bar .arrow{ margin-left:30px}
 
 }
 
@@ -68,6 +72,9 @@
 #artwork #artwork-next{ right:5px; }
 #artwork #artwork-prev:hover{ left:3px}
 #artwork #artwork-next:hover{ right:3px}
+#artwork-info-bar .inner,
+#artwork-project-bar .inner,
+#news-info-bar .inner{ padding:0 30px 0 60px}
 
 
 /* VIEWS
@@ -105,7 +112,7 @@
 .front #home{ position:relative; bottom:auto; margin:0 0 20px; max-width:100%; left:0; bottom:0; text-align:center}
 .front.menu-open #home{ display:none}
 .front #logo-home{ padding:0 20px}
-.front .view-news.view-display-teaser .info-box{ min-height:inherit; max-width:inherit}
+.front .view-news.view-display-teaser .info-box{ min-height:inherit; max-width:inherit; padding:20px}
 
 }
 
@@ -129,8 +136,7 @@
 .thumb .inner{ padding:0 5px 10px}
 .info-box{ padding:20px}
 .info-bar{ text-align:center; margin:0 -10px; }
-.info-bar .inner{ padding-left:30px; padding-right:5px}
-.info-bar #share{ }
+.info-bar .inner{ padding-left:40px; padding-right:5px}
 
 /* TOGGLES */
 .filter-open #project-info-toggle{ display:none}
@@ -142,12 +148,23 @@
 /* ------------------------------ */
 
 /* ARTWORK */
-#artwork > .inner{ padding-top:10px}
-#artwork-image{ margin-bottom:20px}
-#artwork-info-bar .inner{ padding:0 20px 0 30px}
+#artwork > .inner{ padding:10px 0 0}
+#artwork-image{ margin-bottom:30px; margin-top:20px; z-index:24}
+#artwork #artwork-next{ background-position:right bottom}
+#artwork #artwork-prev{ background-position:left bottom}
+#artwork-info-bar .arrow:before{ display:none}
+#artwork-info-bar .inner,
+#artwork-project-bar .inner{ padding:0 10px 0 10px}
+#artwork .info-bar{ margin:0}
 
+.page-images #artwork .artwork-pager{ top:82px}
+.page-images .info-bar .inner{ padding-left:35px; padding-right:35px}
+.page-images #artwork-info-bar .arrow{ top:0}
+
+/* NEWS */
 .node-type-artwork #main{ margin-top:10px}
-#news-info-bar .inner{ padding-left:30px; margin-left:0}
+#artwork-reference{ display:none}
+#news-info-bar .inner{ padding:0 10px 0 40px }
 
 
 /* VIEWS
@@ -155,8 +172,8 @@
 .view.thumbs{ margin:0 -5px}
 
 /* LATEST NEWS */
-.view-news.view-display-teaser .full-width{ padding:20px}
-.view-news.view-display-teaser .info-box{ max-width:none}
+.view-news.view-display-teaser .full-width{ padding:200px 0 0; background-size:auto 200px; background-position:right top; min-height:inherit}
+.view-news.view-display-teaser .info-box{ max-width:none;  padding:20px 0 0; min-height:inherit}
 .view-news.view-display-teaser .field-name-field-intro{ margin:0 0 20px;}
 .view-news.view-display-teaser a.read-more{ position:relative; bottom:0}
 
@@ -172,25 +189,21 @@
 
 /* PAGE ELEMENTS
 /* ------------------------------ */
-.info-bar .arrow, .info-bar #share{ float:none; }
+
+#project-info #project-info-toggle span.mobile-title{ display:inline}
+#project-info #project-info-toggle span.project-title{ display:none}
 
 
 /* CONTENT TYPES
 /* ------------------------------ */
 
 /* ARTWORK */
-#artwork > .inner{ padding:10px 0 0}
-#artwork-image{ margin-bottom:80px; margin-top:20px; z-index:999}
-#artwork #artwork-next{ background-position:right bottom}
-#artwork #artwork-prev{ background-position:left bottom}
-#artwork .info-bar{ margin:0}
-#artwork-info-bar .arrow{ position:relative; top:-45px}
-#artwork-info-bar .arrow:before{ display:none}
-#artwork-info-bar #share{ margin:-37px 0 0}
+#artwork-info-bar .mobile{ display:inline}
+#artwork-info-bar  .project-title{ display:none}
 
-.page-images #artwork .artwork-pager{ top:75px}
-.page-images .info-bar .inner{ padding-left:35px; padding-right:35px}
-.page-images #artwork-info-bar .arrow{ top:0}
+
+/* NEWS */
+#news-info-bar .project-title{ display:none}
 
 
 }
@@ -213,7 +226,7 @@ only screen and (                min-resolution: 192dpi),
 only screen and (                min-resolution: 2dppx) { 
 
 #logo img{ display:none}
-#logo{ background:url(../images/logo@2x.png); background-size:92px 27px; display:inline-block; width:92px; height:27px }
+#logo{ background:url(../images/logo@2x.png); background-size:92px 27px; width:92px; height:27px; display:block; margin:0 auto }
 
 #nav ul.menu li:before,
 #filter p.filter-title:before{ background-image:url(../images/arrow_nav@2x.png); background-size:21px 12px}
@@ -225,7 +238,8 @@ only screen and (                min-resolution: 2dppx) {
 #floating-filter-toggle,
 .arrow:before,
 #share a,
-#artwork .close{ background-image:url(../images/sprite@2x.png); background-size:183px 165px}
+#artwork .close,
+#artwork-reference .arrow span:after{ background-image:url(../images/sprite@2x.png); background-size:183px 165px}
 
 #artwork #artwork-prev{ background-image:url(../images/arrow_left@2x.png); background-size:26px 13px}
 #artwork #artwork-next{ background-image:url(../images/arrow_right@2x.png); background-size:26px 13px}
@@ -239,7 +253,7 @@ only screen and (                min-resolution: 2dppx) {
 .field-collection-container .field-items .field-item:last-child .field-collection-view{ 
 background-image:url(../images/line@2x.png); background-size:auto 2px; background-repeat:repeat-x}
 .info-bar:before{ top:-1px}
-.node-news-press .field-name-body{ background:url(../images/line@2x.png) left top no-repeat, url(../images/line@2x.png) left bottom no-repeat;}
+.node-news-press .field-name-body{ background:url(../images/line@2x.png) left top no-repeat, url(../images/line@2x.png) left bottom no-repeat; background-size:auto 2px;}
 #nav:before, #filter:before{ background-image:url(../images/line_vert@2x.png); background-size:5px auto; }
 
 }
