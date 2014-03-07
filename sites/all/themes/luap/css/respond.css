@@ -200,6 +200,7 @@
 /* ARTWORK */
 #artwork-info-bar .mobile{ display:inline}
 #artwork-info-bar  .project-title{ display:none}
+.page-images #artwork-info-bar .arrow{ visibility:hidden; height:1px; overflow:hidden}
 
 
 /* NEWS */
