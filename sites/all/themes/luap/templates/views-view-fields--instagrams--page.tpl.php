@@ -41,7 +41,11 @@
 		
 		case 'images':
 			preg_match( '/src="([^"]*)"/i', $field->content, $src);
-			print '<a href="'.$fields['link']->content.'" target="_blank" title="'.$fields['caption']->content.'"><img class="lazy" data-src="'.$src[1].'" src="/'.path_to_theme().'/images/pixel.gif" /><div class="transition likes">Likes <span>'.$fields['likes']->content.'</span></div></a>';
+			$caption = '';
+			if (isset($fields['caption'])) {
+				$caption = $fields['caption']->content;
+			}
+			print '<a href="'.$fields['link']->content.'" target="_blank" title="'.$caption.'"><img class="lazy" data-src="'.$src[1].'" src="/'.path_to_theme().'/images/pixel.gif" /><div class="transition likes">Likes <span>'.$fields['likes']->content.'</span></div></a>';
 		break;
 		
 		default:

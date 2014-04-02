@@ -74,11 +74,22 @@ HTML comment.
 						return ($matches[1]); 
 					}
 				}
-			  $id = getYTVideoId(render($item));
+				
+				if(strpos(render($item),'youtube')>0){
+					$id = getYTVideoId(render($item));
+					$embed = '<iframe width="640" height="360" src="//www.youtube.com/embed/'.$id.'?feature=player_detailpage" frameborder="0" allowfullscreen></iframe>';
+				}
+				
+				if(strpos(render($item),'vimeo')>0){
+					$id = getVIMVideoId(render($item));
+					$embed = '<iframe src="//player.vimeo.com/video/'.$id.'" width="500" height="281" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>';
+				}
+				
+			  
           ?>
           
           <div class="fitvids">
-          	<iframe width="640" height="360" src="//www.youtube.com/embed/<?php print $id ?>?feature=player_detailpage" frameborder="0" allowfullscreen></iframe>
+          	<?php print $embed; ?>
           </div>
 
       </div>
