@@ -42,7 +42,7 @@
 		<p class="filter-title">Projects</p>
 		<ul class="reset">
 			<li><a href="/portfolio" class="reset all active">All</a></li>
-            <li><a href="#" class="latest">Latest</a></li>
+            <li><a href="/portfolio/latest" class="latest">Latest</a></li>
 		</ul>
 		
 		<ul class="filter">

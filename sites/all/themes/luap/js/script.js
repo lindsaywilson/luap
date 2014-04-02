@@ -551,6 +551,43 @@ $(document).ready(function() {
 			return false;
 		}
 	});
+	$('#projects a.latest').click( function (){ 
+		var obj = $(this);
+		var path = obj.attr('href');
+		$('#page-content').addClass('fade');
+		$('body').addClass('loading');
+		$('#loading').css('top',obj.offset().top+9+'px').css('left',obj.offset().left-13+'px');
+		closePortfolioInfo();
+		
+		// Load artwork
+			$.ajax({
+				type: 'GET',
+				url: path,
+				// pass ajax response type to load stripped down ajax template
+				data: { response_type: 'ajax' },
+				success: function(html) {
+					
+					$('#page-content').removeClass('fade');
+					$('body').removeClass('loading');
+					$('#projects a.all').addClass('reset');
+					$('#projects a.active').removeClass('active');
+					$('#disciplines .filter a, #projects .filter a').removeClass('fade').removeClass('filter');
+					$('#disciplines a.active').removeClass('active');
+					$('#disciplines a.all').addClass('reset').addClass('active');	
+					obj.addClass('active');
+					
+					$('#node-content').html(html);
+					$("html, body").animate({ scrollTop: 0 });
+					loadImages('img.lazy');
+					$('.artwork').on('click', artworkPopup );
+					
+					window.location.hash = '';
+						
+				}
+			});
+		
+		return false;
+	});
 	
 	
 	// Portfolio page
