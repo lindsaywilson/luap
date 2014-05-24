@@ -55,7 +55,6 @@ $(document).ready(function() {
 				$(this).attr('class','close-nav');
 				$('body').addClass('menu-open');
 				$('#filter-toggle span.cover').addClass('fade');
-				$('#nav').height('auto');
 				resizeNav();
 				if($('#page').height() <= $('#nav').height()){
 					$('#page').height($('#nav').height());
@@ -65,7 +64,8 @@ $(document).ready(function() {
 				$(this).attr('class','open-nav');
 				$('body').removeClass('menu-open');
 				$('#filter-toggle span.cover').removeClass('fade');
-				$('#page').height('auto');
+				$('#nav').height('auto');
+				$('#page').height();
 			break;
 		}
 		return false;
@@ -77,7 +77,6 @@ $(document).ready(function() {
 				$(this).attr('class','close-filter');
 				$('body').addClass('filter-open');
 				$('#menu-toggle span').addClass('fade');
-				$('#filter').height('auto');
 				resizeNav();
 				if($('#page').height() <= $('#filter').height()){
 					$('#page').height($('#filter').height());
@@ -87,7 +86,8 @@ $(document).ready(function() {
 				$(this).attr('class','open-filter');
 				$('body').removeClass('filter-open');
 				$('#menu-toggle span').removeClass('fade');
-				$('#page').height('');
+				$('#filter').height('auto');
+				$('#page').height();
 			break;
 		}
 		return false;
@@ -104,7 +104,7 @@ $(document).ready(function() {
 		} 
 	}
 	resizeNav();
-	$(window).resize(function() {
+		$(window).resize(function() {
 		resizeNav();
 	})
 	

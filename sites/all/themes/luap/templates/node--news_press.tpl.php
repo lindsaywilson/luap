@@ -56,7 +56,11 @@
 <?php endif; ?>
 
 <?php 
-if($view_mode == 'teaser' && $node->field_news_type['und'][0]['tid'] == 22):
+
+$views_page = views_get_page_view();
+
+if($view_mode == 'teaser' && $node->field_news_type['und'][0]['tid'] == 22 || 
+(is_object($views_page) && $view->current_display == 'tags' && $node->field_news_type['und'][0]['tid'] == 23)):
 	
 	global $user;
 	$path = file_create_url($node->field_image_2['und'][0]['uri']); 
@@ -76,7 +80,7 @@ if($view_mode == 'teaser' && $node->field_news_type['und'][0]['tid'] == 22):
 <?php endif; ?>
 
 <?php 
-if($view_mode == 'teaser' && $node->field_news_type['und'][0]['tid'] == 23): 
+if($view_mode == 'teaser' && $node->field_news_type['und'][0]['tid'] == 23 && (is_object($views_page) && $view->current_display != 'tags')): 
 	
 	$path = image_style_url('press_logo', $content['field_logo']['#items'][0]['uri']);
 	?>
