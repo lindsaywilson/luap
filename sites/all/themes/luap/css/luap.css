@@ -25,7 +25,7 @@ body{ color:#000; font-family:'VolkswagenMed'; font-size:62.5%; -webkit-font-smo
 /* MENUS
 /* ------------------------------ */
 
-#nav, #filter{ background:#fff; width:190px; position:absolute; top:0; right:-190px}
+#nav, #filter{ background:#fff; width:190px; position:absolute; top:0; right:-190px;}
 #nav:before, #filter:before{ content:''; display:block; background:url(../images/line_vert.png) repeat-y; position:absolute; left:0; top:0; width:5px; height:100%;}
 #nav > .inner{ padding-top:25px}
 #nav ul.menu, #nav ul.menu li{ margin:0; padding:0; list-style:none;}
