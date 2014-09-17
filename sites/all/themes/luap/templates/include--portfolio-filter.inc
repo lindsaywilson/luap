@@ -43,6 +43,7 @@
 		<ul class="reset">
 			<li><a href="/portfolio" class="reset all active">All</a></li>
             <li><a href="/portfolio/latest" class="latest">Latest</a></li>
+            <li><a href="/portfolio/highlighted" class="highlighted">Highlighted</a></li>
 		</ul>
 		
 		<ul class="filter">
