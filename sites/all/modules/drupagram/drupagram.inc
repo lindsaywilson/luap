@@ -163,7 +163,6 @@ function drupagram_fetch_user_feed($id) {
 function drupagram_fetch_recent_items($id) {
   $params = array();
   $account = drupagram_account_load($id);
-  $ins_ids = array();
 
   $min_id = db_query("SELECT MAX(drupagram_id) FROM {drupagram} WHERE username = :username", array(':username' => $account->username))->fetchField();
 
@@ -180,7 +179,6 @@ function drupagram_fetch_recent_items($id) {
 
   foreach ($items as $media) {
     drupagram_media_save($media);
-    $ins_ids[] = $media->id;
   }
 
   if (count($items) > 0) {
@@ -193,17 +191,6 @@ function drupagram_fetch_recent_items($id) {
     ))
     ->condition('drupagram_id', $account->id)
     ->execute();
-
-  // Delete data which are not exist on instagram
-  $all_data = drupagram_fetch_all_items($id);
-  $del_data = array_diff($all_data,$ins_ids);
-  if (is_array($del_data)) {
-    foreach ($del_data as $del_key) {
-        db_delete('drupagram')
-            ->condition('drupagram_id', $del_key, '=')
-            ->execute();
-        }
-  }
 }
 
 /**
@@ -267,18 +254,4 @@ function drupagram_emoji(&$variable) {
     $variable = preg_replace("/[\xC0-\xF7]{1,1}[\x80-\xBF]+/", "", htmlspecialchars($variable, ENT_NOQUOTES, 'UTF-8', FALSE));
   }
   return $variable;
-}
-
-/**
- * Fetches a user's all items.
- */
-function drupagram_fetch_all_items($id) {
-  $ids = array();
-  $account = drupagram_account_load($id);
-
-  $drupagram_ids = db_query("SELECT drupagram_id FROM {drupagram} WHERE username = :username", array(':username' => $account->username));
-    foreach ($drupagram_ids as $drupagram_id) {
-        $ids[] = $drupagram_id->drupagram_id;
-    }
-    return $ids;
 }
