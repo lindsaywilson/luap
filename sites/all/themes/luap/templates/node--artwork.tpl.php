@@ -26,7 +26,7 @@
     </div>
     
     <div id="artwork-details">
-    	<h2<?php print $title_attributes; ?>><?php print $title; ?></h2>
+    	<h1<?php print $title_attributes; ?>><?php print $title; ?></h1>
     	<p class="specs">
 		<?php
 		print $content['field_project'][0]['#title'].', 

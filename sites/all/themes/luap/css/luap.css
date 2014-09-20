@@ -298,7 +298,8 @@ img.lazy{ width:100%}
 
 #artwork-image{ text-align:center; max-width:1000px; margin:0 auto 60px; position:relative;}
 #artwork-image img{ max-height:100%; position:absolute; margin:auto; top:0; right:0; bottom:0; left:0}
-.node-artwork h2{ margin-bottom:15px}
+.node-artwork h1,
+.node-artwork h2{ margin-bottom:15px; margin-top:40px; font-size:2em}
 #artwork-details,
 #artwork-project-details{ text-align:center; max-width:560px; margin:0 auto 50px; padding:0 10px }
 
